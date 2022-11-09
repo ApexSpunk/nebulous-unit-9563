@@ -1,4 +1,4 @@
-
+import { productReducer } from './products/reducer';
 
 import {
     legacy_createStore as createStore,
@@ -10,6 +10,7 @@ import {
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
+    product:productReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

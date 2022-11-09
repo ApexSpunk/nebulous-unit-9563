@@ -1,0 +1,22 @@
+
+.container{
+width:100%;
+border: 1px solid green;
+gap: 4rem;
+grid-template-columns:repeat(4,1fr);
+height: 100%;
+
+}
+.smallcontainer{
+    width:60%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 1rem;
+    cursor: pointer;
+}
+.childs img{
+    width: 10%;
+    
+}
+
