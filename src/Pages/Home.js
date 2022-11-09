@@ -1,10 +1,11 @@
 import React from 'react'
+import HomePageComCarosel from '../Components/homepage/homePageComCarosel'
 
 function Home() {
   return (
-    <div>
-      Home
-    </div>
+    <>
+     < HomePageComCarosel/>
+    </>
   )
 }
 
