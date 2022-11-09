@@ -8,20 +8,17 @@ function AddProduct({ product, updateProduct, deleteProduct, type, addProduct })
 
     const [productData, setProductData] = useState({ ...product })
 
-    const handleImagesSelect = (e) => {
-        // push the selected images to the productData.images array and post to the server using formdata
-        const files = e.target.files;
-        const formData = new FormData();
-        formData.append('title', productData.title);
-        for (let i = 0; i < files.length; i++) {
-            formData.append('images', files[i])
+    const handleFormChange = (e) => {
+        if (e.target.name === 'images') {
+            setProductData({ ...productData, [e.target.name]: e.target.files })
         }
-        setProductData({ ...productData, images: formData })
+        else {
+            setProductData({ ...productData, [e.target.name]: e.target.value })
+        }
+
+
     }
 
-    const handleFormChange = (e) => {
-        setProductData({ ...productData, [e.target.name]: e.target.value })
-    }
 
     return (
         <Box w={type === 'add' ? null : '100%'} >
@@ -69,31 +66,22 @@ function AddProduct({ product, updateProduct, deleteProduct, type, addProduct })
                             type === 'add' && <FormControl mt={4}>
                                 <FormLabel>Images</FormLabel>
                                 <Input multiple
-                                    onChange={handleImagesSelect}
-                                    type='file' placeholder='Product Images' name='image' accept="image/*" />
+                                    onChange={handleFormChange}
+                                    type='file' placeholder='Product Images' name='images' accept="image/*" />
                             </FormControl>
                         }
 
-                        <FormControl mt={4}>
-                            <FormLabel>Category</FormLabel>
-                            <Select onChange={handleFormChange} name='category' value={productData.category}>
-                                <option value='Men'>Men</option>
-                                <option value='Women'>Women</option>
-                                <option value='Kids'>Kids</option>
-                            </Select>
-                        </FormControl>
+
 
                         <Flex mt={4} gap={4}>
                             <FormControl mt={4}>
-                                <FormLabel>Size</FormLabel>
-                                <Select onChange={handleFormChange} name='size' value={productData.size}>
-                                    <option value="small">Small</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="large">Large</option>
-                                    <option value="xlarge">X-Large</option>
+                                <FormLabel>Category</FormLabel>
+                                <Select onChange={handleFormChange} name='category' value={productData.category}>
+                                    <option value='Men'>Men</option>
+                                    <option value='Women'>Women</option>
+                                    <option value='Kids'>Kids</option>
                                 </Select>
                             </FormControl>
-
                             <FormControl mt={4}>
                                 <FormLabel>Color</FormLabel>
                                 <Select onChange={handleFormChange} name='color' value={productData.color}>

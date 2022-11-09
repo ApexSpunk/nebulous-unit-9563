@@ -17,7 +17,7 @@ function Products() {
       body: JSON.stringify(product)
     });
     const data = await response.json();
-    
+
     setProducts(products.map((product) => product._id === id ? data.data : product))
   }
 
@@ -33,8 +33,26 @@ function Products() {
   }
 
   const addProduct = async (product) => {
-    console.log(product)
+    let formData = new FormData();
+    formData.append('title', product.title);
+    formData.append('price', product.price);
+    formData.append('description', product.description);
+    formData.append('category', product.category);
+    for (let i = 0; i < product.images.length; i++) {
+      formData.append('images', product.images[i]);
+    }
+    const response = await fetch('http://localhost:8080/products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'token': '636aad2323c2e54f773ad8f9:chandan@gmail.com:123'
+      },
+      body: formData
+    });
+    const data = await response.json();
+    console.log(data);
   }
+
 
   const getProducts = async () => {
     const response = await fetch('https://cultwear.onrender.com/products');
