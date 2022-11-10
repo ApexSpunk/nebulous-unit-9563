@@ -62,7 +62,7 @@ export default function HomePageCarosel({images,isleft,links}){
                         initial={{opacity:0,y:isup?"100vh":"-100vh"}}
                         animate={{opacity:1,y:0}}
                         transition={{type:"tween", duration:0.5}}
-                        width="100%" height={"100%"}  src={el.item} 
+                        width="100%" height={"100vh"}  src={el.item} 
                         />:
                         <motion.video autoPlay muted loop initial={{opacity:0,y:isup?"100vh":"-100vh"}}
                         animate={{opacity:1,y:0}}
