@@ -1,6 +1,7 @@
-import { Box, Button, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import SimilarProduct from './SimilarProduct';
 
 function Product() {
 
@@ -11,6 +12,10 @@ function Product() {
         error: false
     });
 
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    
+    
     const { title, price, description, images, color, category, sizes } = productState.product;
 
     const getProduct = async (id) => {
@@ -19,6 +24,8 @@ function Product() {
             const response = await fetch(`https://cultwear.onrender.com/products/${id}`);
             const data = await response.json();
             data.data.sizes = ['XS', 'S', 'M', 'L', 'XL']
+            //set title in search params
+            setSearchParams({title:data.data.title.split(' ').join('-').toLowerCase()})
             setProductState({ ...productState, product: data.data, loading: false });
         } catch (error) {
             setProductState({ ...productState, error: true, loading: false });
@@ -33,10 +40,10 @@ function Product() {
     return (
         <Box>
             {
-                productState.loading ? <Text>Loading...</Text> :
-                    productState.error ? <Text>Error</Text> :
-                        <Grid templateColumns="repeat(7, 1fr)" gap={6} mx={28}>
-                            <GridItem colSpan={2} display='grid' placeItems='end'>
+                productState.loading ? <Text>Loading...</Text> : productState.error ? <Text>Error</Text> :
+                    <Box>
+                        <Grid templateColumns="repeat(7, 1fr)" gap={6} mx={{ base: '0', md: '10', lg: '20', xl: '28' }} >
+                            <GridItem colSpan={2} placeItems='end' display={{ base: 'none', lg: 'grid' }}>
                                 <Box ml='0' mr='20' mb='6'>
                                     <Text fontSize="md" fontWeight='semibold'>MATERIALS, CARE AND ORIGIN</Text>
                                     <Text fontSize="sm" fontWeight='semibold' my={4}>JOIN LIFE</Text>
@@ -47,18 +54,21 @@ function Product() {
                                     <Text fontSize="sm" my={2} textDecoration="underline">View More</Text>
                                 </Box>
                             </GridItem>
-                            <GridItem colSpan={3}>
-                                <Box h='89vh' my='6vh' w='100%' overflowY={'scroll'} >
+                            <GridItem colSpan={{ base: 7, sm: 7, md: 4, lg: 3 }} mx={{ base: 10, md: 0 }} >
+                                <Box h='89vh' my='6vh' w='100%' display={{ base: 'none', md: 'block' }} overflowY='scroll' overflowX='hidden' >
                                     {
                                         images.map((image, index) => (
-                                            <img key={index} src={image} alt={title} />
+                                            <Image key={index} src={image} alt={title} />
                                         ))
                                     }
                                 </Box>
+                                <Box display={{ base: 'block', md: 'none' }}>
+                                    <Image src={images[0]} alt={title} />
+                                </Box>
                             </GridItem>
-                            <GridItem colSpan={2} flexDirection='column' justifyContent='space-between' display='grid' placeItems='end'>
+                            <GridItem colSpan={{ base: 7, sm: 7, md: 3, lg: 2 }} flexDirection='column' justifyContent='space-between' display='grid' placeItems='end'>
                                 {
-                                    <Box p={4} ml='8' mr='2' mb='4'>
+                                    <Box p={4} mr='2' mb='4'>
                                         <Text fontSize="md" fontWeight='semibold'>{title}</Text>
                                         <Text fontSize="sm" my={2}>{description}</Text>
                                         <Text fontSize="sm" my={2}>{color.toUpperCase()} | 3067/206</Text>
@@ -88,6 +98,11 @@ function Product() {
                                 }
                             </GridItem>
                         </Grid>
+                        <Box p={4} ml='8' mr='2' mb='4'>
+                            <Text fontSize="md" fontWeight='semibold'>OTHER YOU MIGHT LIKE</Text>
+                            <SimilarProduct category={category} />
+                        </Box>
+                    </Box>
             }
         </Box>
     )
