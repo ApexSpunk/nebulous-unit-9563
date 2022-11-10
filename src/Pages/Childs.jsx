@@ -11,7 +11,7 @@ const Childs = () => {
         dispatch(getProducts('Child'))
     }, [])
     return (
-        <div className={styles.container}>
+        <div >
             <div className={styles.smallcontainer}>
                 <div>GIRL</div>
                 <div>BOY</div>
@@ -21,17 +21,15 @@ const Childs = () => {
                 
             </div>
 
-            <div  >
+            <div className={styles.container} >
                 {loading ? `loading` :
                     data.map(el => (
                         <div key={el.id} className={styles.childs} >
                             <p>
-
-
-                            <img src="https://static.zara.net/photos///2022/I/0/3/p/5802/702/664/103/w/1920/5802702664_1_1_1.jpg?ts=1656589941127" alt="image not found" />
+                         <img src={el.images} alt="image not found" />
                             </p>
                             
-                             {el.title} {el.price} </div>
+                            <div className={styles.price}><p>{el.title}</p> <p>{el.price}</p></div> </div>
                     ))
 
 
