@@ -33,7 +33,7 @@ function SimilarProduct({ category }) {
                 productsData.loading ? <Text>Loading...</Text> : productsData.error ? <Text>Products Not Found</Text> :
                     productsData.products.map((product, index) => (
                         <GridItem key={index} colSpan={{ base: 12, md: 4, lg: 3, xl: 2}}>
-                            <Link to={`/product/${product.title.split(' ').join('-').toLowerCase()}?id=${product._id}`}>
+                            <Link to={`/product/${product._id}`}>
                             <Box>
                                 <img src={product.images[product.images.length-3]} alt={product.title} />
                                 <Text fontSize="xs">{product.title}</Text>
