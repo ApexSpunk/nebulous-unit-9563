@@ -8,10 +8,10 @@ const Womens = () => {
     const { loading, data, error } = useSelector(state=>state.product)
     useEffect(() => {
         
-        dispatch(getProducts('women'))
+        dispatch(getProducts('Womens'))
     }, [])
     return (
-        <div className={styles.container}>
+        <div >
             <div className={styles.smallcontainer}>
                 <div>VIEW ALL</div>
                 <div>DRESSES</div>
@@ -20,15 +20,18 @@ const Womens = () => {
                 <div>TROUSERS</div>
                 <div>SHOES</div>
             </div>
+            <div  className={styles.container}>
             {loading ? `loading` :
                 data.map(el => (
-                    <div key={el.id}  >{el.images} {el.title} {el.price} </div>
+                    <div key={el.id} className={styles.childs}  >
+                        <p><img src={el.images[1]} alt="image not found" /></p>
+                        <div className={styles.price}><p>{el.title}</p> <p>₹{el.price}</p> </div> </div>
                 ))
 
 
 
             }
-
+</div>
 
         </div>
 
