@@ -27,7 +27,7 @@ export default function HomePageCarosel({images,isleft,links}){
                 setCindex(cindex+1)
             }
             run =false
-           },800)
+           },1200)
         }   
         
     }
@@ -44,7 +44,7 @@ export default function HomePageCarosel({images,isleft,links}){
                     setCindex(cindex-1)
                 }
              run =false
-            },800)
+            },1200)
          }
         
        
@@ -52,7 +52,7 @@ export default function HomePageCarosel({images,isleft,links}){
     return (
         <motion.div initial={{opacity:0,x:isleft?"-100vh":"100vh"}}
         animate={{opacity:1,x:0,}}
-        transition={{type:"tween", duration:0.9}}>
+        transition={{type:"tween", duration:1}}>
             <Box w="100%"  h={"100vh"} overflow="hidden" onWheel={(e)=>{e.deltaY>0?handleNext():handlePrev()}} >
                 
                 {images.slice(cindex,cindex+1).map((el)=>{
@@ -61,19 +61,19 @@ export default function HomePageCarosel({images,isleft,links}){
                         <Box key={el.item} pos="relative">{!el.isvedio?<motion.img  
                         initial={{opacity:0,y:isup?"100vh":"-100vh"}}
                         animate={{opacity:1,y:0}}
-                        transition={{type:"tween", duration:0.5}}
-                        width="100%" height={"100%"}  src={el.item} 
+                        transition={{type:"tween", duration:0.8}}
+                        width="100%" height={"100%"} objectFit="cover"  src={el.item} 
                         />:
                         <motion.video autoPlay muted loop initial={{opacity:0,y:isup?"100vh":"-100vh"}}
                         animate={{opacity:1,y:0}}
                         transition={{type:"tween", duration:0.5}}
-                        width="100%" height={"100%"} >
+                        width="100%" height={"100vh"} >
                         <source   src={el.item} type="video/mp4"/>
                         </motion.video>
                         
                         }
                         {cindex!==images.length-1&&<PageLinks />}
-                     {  cindex===images.length-1&&<Footer />}
+                        {cindex===images.length-1&&<Footer />}
                         </Box>
                     )
                     

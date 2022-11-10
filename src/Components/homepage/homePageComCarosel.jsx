@@ -24,7 +24,7 @@ export default function HomePageComCarosel(){
         <Box w="100%"  h={"100vh"} >
             
             <Flex alignItems={"center"}  >
-                <Box pos={"absolute"} left={10} visibility={count<=1?"hidden":"visible"} zIndex="10" ><FiChevronLeft size={100} onClick={()=>{
+                <Box pos={"absolute"} left={10} visibility={count<=1?"hidden":"visible"} zIndex="10" ><FiChevronLeft size={50} onClick={()=>{
                     setCount(count-1);
                     setIsleft(true)
                 }}/></Box>
@@ -33,7 +33,7 @@ export default function HomePageComCarosel(){
             {count===2&&<HomePageCarosel images={man} isleft={isleft}/>}
             {count===3&&<HomePageCarosel images={kids} isleft={isleft}/>}
                 </Box >
-                <Box pos={"absolute"} right={10} visibility={count>=3?"hidden":"visible"} ><FiChevronRight size={100} onClick={()=>{
+                <Box pos={"absolute"} right={10} visibility={count>=3?"hidden":"visible"} ><FiChevronRight size={50} onClick={()=>{
                     setCount(count+1);
                     setIsleft(false)
                 }}/></Box>
