@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
-import { getProducts } from '../Redux/products/actions'
+import { Link } from 'react-router-dom'
+import { getProducts, getProductsByCategory } from '../Redux/products/actions'
 import styles from "../Styles/product.module.css"
 const Womens = () => {
     const dispatch = useDispatch()
-    const { loading, data, error } = useSelector(state=>state.product)
+    const { getProducts: { loading, error }, products } = useSelector(state => state.product)
     useEffect(() => {
-        
-        dispatch(getProducts('women'))
-    }, [])
+        dispatch(getProducts({ category: "Womens" }))
+    }, [dispatch])
     return (
-        <div className={styles.container}>
+        <div >
             <div className={styles.smallcontainer}>
                 <div>VIEW ALL</div>
                 <div>DRESSES</div>
@@ -20,15 +20,24 @@ const Womens = () => {
                 <div>TROUSERS</div>
                 <div>SHOES</div>
             </div>
-            {loading ? `loading` :
-                data.map(el => (
-                    <div key={el.id}  >{el.images} {el.title} {el.price} </div>
-                ))
+            <div className={styles.container}>
+                {loading ? `loading` :
+                    products.map(el => (
+                        <Link to={`/product/${el._id}`} key={el._id}>
+                            <div className={styles.childs}  >
+                                <p><img src={el.images[el.images.length - 3]} alt="image not found" /></p>
+                                <div className={styles.price}>
+                                    <p>{el.title}</p>
+                                    <p>₹{el.price}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))
 
 
 
-            }
-
+                }
+            </div>
 
         </div>
 
