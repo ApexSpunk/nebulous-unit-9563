@@ -2,13 +2,13 @@ import { Link } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
-import { getProductsByCategory } from '../Redux/products/actions'
+import { getProducts } from '../Redux/products/actions'
 import styles from "../Styles/product.module.css"
 const Childs = () => {
     const dispatch = useDispatch()
-    const { getProductsByCategory: { loading, error }, products } = useSelector(state => state.product)
+    const { getProducts: { loading, error }, products } = useSelector(state => state.product)
     useEffect(() => {
-        dispatch(getProductsByCategory("Womens"))
+        dispatch(getProducts({ category: "Child" }))
     }, [dispatch])
     return (
         <div >

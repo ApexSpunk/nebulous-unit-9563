@@ -2,21 +2,20 @@ import { Box, Button, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getProductsByCategory, getSingleProduct } from '../Redux/products/actions';
+import { getProducts, getSingleProduct } from '../Redux/products/actions';
 import SimilarProduct from './SimilarProduct';
 
 function Product() {
 
     const { id } = useParams();
-    const dispatch = useDispatch();
-    const { getProduct: { loading, error }, singleProduct } = useSelector(state => state.product);
-    singleProduct.sizes = ['XS', 'S', 'M', 'L', 'XL'];
-    const { title, price, description, images, color, category, sizes } = singleProduct;
-
+    const dispatch = useDispatch()
+    const { getProduct: { loading, error }, singleProduct } = useSelector(state => state.product)
     useEffect(() => {
-        dispatch(getSingleProduct(id));
-        dispatch(getProductsByCategory(category));
-    }, [id, dispatch]);
+        dispatch(getSingleProduct(id))
+        dispatch(getProducts({ category: singleProduct.category }))
+    }, [id, dispatch])
+    singleProduct.sizes = ["S", "M", "L", "XL", "XXL"]
+    const { title, price, images, description, color, sizes } = singleProduct;
 
     return (
         <Box>

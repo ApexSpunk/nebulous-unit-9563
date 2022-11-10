@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function SimilarProduct() {
     const dispatch = useDispatch();
-    const { getProductsByCategory: { loading, error }, products } = useSelector(state => state.product );
+    const { getProducts: { loading, error }, products } = useSelector(state => state.product );
     return (
         <Grid gap={6} templateColumns="repeat(12, 1fr)">
             {

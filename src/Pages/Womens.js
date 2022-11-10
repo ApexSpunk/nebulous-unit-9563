@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom'
-import { getProductsByCategory } from '../Redux/products/actions'
+import { getProducts, getProductsByCategory } from '../Redux/products/actions'
 import styles from "../Styles/product.module.css"
 const Womens = () => {
     const dispatch = useDispatch()
-    const { getProductsByCategory: { loading, error }, products } = useSelector(state => state.product)
+    const { getProducts: { loading, error }, products } = useSelector(state => state.product)
     useEffect(() => {
-        dispatch(getProductsByCategory("Womens"))
+        dispatch(getProducts({ category: "Womens" }))
     }, [dispatch])
     return (
         <div >
