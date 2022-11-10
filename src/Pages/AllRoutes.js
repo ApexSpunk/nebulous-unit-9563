@@ -7,7 +7,7 @@ import Womens from './Womens';
 import Mens from './Mens';
 import Childs from './Childs';
 import Search from "./Search";
-
+import Product from '../Components/Product';
 
 const AllRoutes = () => {
     return (
@@ -17,6 +17,7 @@ const AllRoutes = () => {
             <Route path="/womens" element={<Womens />} />
             <Route path="/mens" element={<Mens />} />
             <Route path="/childs" element={<Childs />} />
+            <Route path="/product/:id" element={<Product />} />
             <Route path="/admin" element={<Admin><Dashboard /></Admin>} />
             <Route path="/admin/products" element={<Admin><Products /></Admin>} />
             <Route path="*" element={<h2>404 Not Found</h2>} />
