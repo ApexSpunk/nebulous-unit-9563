@@ -1,4 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+
+import {Routes, Route} from 'react-router-dom';
+import Register from '../Components/loginLogout/Register';
+import UserLoginComponent from '../Components/loginLogout/UserLoginComponent';
 import Dashboard from "../Components/Admin/Dashboard";
 import Products from "../Components/Admin/Products";
 import Admin from "./Admin";
@@ -13,9 +16,13 @@ import Product from '../Components/Product';
 import Login from "../Components/Loginnn";
 import Header from "../Components/Header";
 
+
 const AllRoutes = () => {
     return (
         <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/login' element = {<UserLoginComponent />}/>
+            <Route path = "/register" element = {<Register />}></Route>
             <Route path="/" element={<><Header page='home' /><Home /></>} />
             <Route path="/search" element={<><Header /><Search /><Home /></>} />
             <Route path="/womens" element={<><Header /><Womens /></>} />
