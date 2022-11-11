@@ -1,0 +1,28 @@
+
+.container{
+width:100%;
+gap: 4rem;
+grid-template-columns:repeat(4,1fr);
+height: 100%;
+display: grid;
+margin:1rem;
+
+
+
+}
+.smallcontainer{
+    width:60%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 1rem;
+    cursor: pointer;
+}
+.childs img{
+    width:100%;
+    
+}
+.price{
+    display: flex;
+ justify-content:space-between;
+}
