@@ -12,6 +12,7 @@ import Childs from "./Childs";
 import Search from "./Search";
 import SearchMen from "./SearchMen";
 import SearchWoman from "./SearchWoman";
+import Payment from "./payment";
 import Product from '../Components/Product';
 import Login from "../Components/Loginnn";
 import Header from "../Components/Header";
@@ -29,6 +30,7 @@ const AllRoutes = () => {
             <Route path="/mens" element={<><Header /><Mens /></>} />
             <Route path="/childs" element={<><Header /><Childs /></>} />
             <Route path="/product/:id" element={<><Header /><Product /></>} />
+            <Route path="/payment" element={<><Header /><Payment /></>} />
             <Route path="searchman" element={<SearchMen />} />
             <Route path="searchwoman" element={<SearchWoman />} />
             <Route path="/admin" element={<Admin><Dashboard /></Admin>} />

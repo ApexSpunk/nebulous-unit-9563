@@ -24,18 +24,21 @@
     
    
     margin-top: 3rem;
+   
     
 }
 
 .container1{
     width: 60%;
     margin-left: 13rem;
+    
 }
 
 .container1 h1{
     font-size: 12px;
     font-weight: bold;
     padding: .5rem 0;
+    
 }
 
 .container1 p{
@@ -50,9 +53,15 @@
     
    
     width: 92rem;
+    
     display: grid;
     grid-template-columns: repeat(6,1fr);
     gap: 1.5rem;
+    
+    margin-left: 2rem;
+    
+    
+   
     
     
 }
@@ -73,4 +82,37 @@
 
 .section p{
     font-size: 12px;
+}
+
+@media screen and (max-width:1000px) {
+    .container2{
+        grid-template-columns: repeat(3,1fr);
+        
+    }
+    .products img{
+        width: 30rem;
+    }
+    .products p{
+        font-size: 20px;
+    }
+
+    
+}
+
+@media screen and (max-width:600px) {
+    .container2{
+        grid-template-columns: repeat(1,1fr);
+        
+    }
+    .products img{
+        width: 90rem;
+    }
+    .products p{
+        font-size: 40px;
+    }
+    .title{
+        width:40rem ;
+        
+    }
+  
 }
