@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 export const getCart = () => async (dispatch) => {
     try {
         dispatch({ type: GET_CART_REQUEST });
-        const res = await axios.get(`http://localhost:8080/cart`, {
+        const res = await axios.get(`https://cultwear.onrender.com/cart`, {
             headers: {
                 token: Cookies.get("token"),
             },
@@ -23,7 +23,7 @@ export const addProductToCart = (id) => async (dispatch) => {
     try {
         dispatch({ type: ADD_TO_CART_REQUEST });
         let cart = {productId: id, quantity: 1}
-        const res = await axios.post(`http://localhost:8080/cart`, cart, {
+        const res = await axios.post(`https://cultwear.onrender.com/cart`, cart, {
             headers: {
                 token: Cookies.get("token"),
             },

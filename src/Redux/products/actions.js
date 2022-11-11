@@ -9,12 +9,6 @@ import {
     
 } from "./actionTypes";
 
-<<<<<<< HEAD
-const token = '636aad2323c2e54f773ad8f9:chandan@gmail.com:123'
-
-
-=======
->>>>>>> main
 export const getProducts = (params) => async (dispatch) => {
     let query = ''
     params && Object.keys(params).forEach(key => {
@@ -44,11 +38,7 @@ export const addProduct = (product) => async (dispatch) => {
         dispatch({ type: ADD_PRODUCT_LOADING })
         const response = await axios.post('https://cultwear.onrender.com/products', product, {
             headers: {
-<<<<<<< HEAD
-                'token': token
-=======
                 'token': Cookies.get('token')
->>>>>>> main
             }
         });
         dispatch({ type: ADD_PRODUCT, payload: response.data.data })
@@ -62,11 +52,7 @@ export const updateProduct = (id, product) => async (dispatch) => {
         dispatch({ type: UPDATE_PRODUCT_LOADING })
         const response = await axios.patch(`https://cultwear.onrender.com/products/${id}`, product, {
             headers: {
-<<<<<<< HEAD
-                'token': token
-=======
                 'token': Cookies.get('token')
->>>>>>> main
             }
         });
         dispatch({ type: UPDATE_PRODUCT, payload: response.data.data })
@@ -80,11 +66,7 @@ export const deleteProduct = (id) => async (dispatch) => {
         dispatch({ type: DELETE_PRODUCT_LOADING })
         const response = await axios.delete(`https://cultwear.onrender.com/products/${id}`, {
             headers: {
-<<<<<<< HEAD
-                'token': token
-=======
                 'token': Cookies.get('token')
->>>>>>> main
             }
         });
         dispatch({ type: DELETE_PRODUCT, payload: response.data.data })

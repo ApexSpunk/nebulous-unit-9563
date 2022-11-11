@@ -20,9 +20,8 @@ import Header from "../Components/Header";
 const AllRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path='/login' element = {<UserLoginComponent />}/>
-            <Route path = "/register" element = {<Register />}></Route>
+            <Route path='/login' element = {<><Header /><UserLoginComponent /></>}/>
+            <Route path = "/register" element = {<><Header /><Register /></>}></Route>
             <Route path="/" element={<><Header page='home' /><Home /></>} />
             <Route path="/search" element={<><Header /><Search /><Home /></>} />
             <Route path="/womens" element={<><Header /><Womens /></>} />
