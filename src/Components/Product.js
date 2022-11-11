@@ -2,6 +2,7 @@ import { Box, Button, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { addProductToCart } from '../Redux/cart/actions';
 import { getProducts, getSingleProduct } from '../Redux/products/actions';
 import SimilarProduct from './SimilarProduct';
 
@@ -35,7 +36,7 @@ function Product() {
                                 </Box>
                             </GridItem>
                             <GridItem colSpan={{ base: 7, sm: 7, md: 4, lg: 3 }} mx={{ base: 10, md: 0 }} >
-                                <Box h='89vh' my='6vh' w='100%' display={{ base: 'none', md: 'block' }} overflowY='scroll' overflowX='hidden' >
+                                <Box h='85vh' mb='6vh' w='100%' display={{ base: 'none', md: 'block' }} overflowY='scroll' overflowX='hidden' >
                                     {
                                         images.map((image, index) => (
                                             <Image key={index} src={image} alt={title} />
@@ -71,7 +72,7 @@ function Product() {
                                             <Text fontSize="xs" color='gray.500'>SIZE GUIDE</Text>
                                         </Flex>
                                         <Box h='1px' bg='gray.200' mt='2' mb={6}></Box>
-                                        <Button mt='2' p='5' w='full' bg='black' rounded='none' size="sm" color='white' _hover={{ bg: 'black' }} _active={{ bg: 'black' }} _focus={{ bg: 'black' }}>ADD TO BAG</Button>
+                                        <Button onClick={()=>dispatch(addProductToCart(id))} mt='2' p='5' w='full' bg='black' rounded='none' size="sm" color='white' _hover={{ bg: 'black' }} _active={{ bg: 'black' }} _focus={{ bg: 'black' }}>ADD TO BAG</Button>
                                         <Text fontSize="xs" mt='8' mb='2'>CHECK IN-STORE AVAILABILITY</Text>
                                         <Text fontSize="xs" my='2'>DELIVERY, EXCHANGES AND RETURNS</Text>
                                     </Box>
