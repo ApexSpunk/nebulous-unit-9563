@@ -1,6 +1,8 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
+
+
 export default function PageLinks(){
     return (
         <Box w="100%" pos={"absolute"}  zIndex={1000} bottom={"8%"}>
