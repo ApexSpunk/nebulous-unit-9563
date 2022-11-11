@@ -18,6 +18,7 @@ export default function Footer(){
                             Industria de Diseño Textil, S.A. (INDITEX, S.A.)<br/>
                             Avenida de la Diputación, Edificio Inditex, 15143, Arteixo (A Coruña), Spain
                             </Text></Box></Box>
+                            {/* ksfamfgrwgmr */}
                         </Box>
     )
 }
