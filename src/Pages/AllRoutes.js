@@ -10,16 +10,19 @@ import Search from "./Search";
 import SearchMen from "./SearchMen";
 import SearchWoman from "./SearchWoman";
 import Product from '../Components/Product';
+import Login from "../Components/Loginnn";
+import Header from "../Components/Header";
 
 const AllRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/womens" element={<Womens />} />
-            <Route path="/mens" element={<Mens />} />
-            <Route path="/childs" element={<Childs />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/" element={<><Header page='home' /><Home /></>} />
+            <Route path="/search" element={<><Header /><Search /><Home /></>} />
+            <Route path="/womens" element={<><Header /><Womens /></>} />
+            <Route path="/loginnn" element={<><Header /><Login /></>} />
+            <Route path="/mens" element={<><Header /><Mens /></>} />
+            <Route path="/childs" element={<><Header /><Childs /></>} />
+            <Route path="/product/:id" element={<><Header /><Product /></>} />
             <Route path="searchman" element={<SearchMen />} />
             <Route path="searchwoman" element={<SearchWoman />} />
             <Route path="/admin" element={<Admin><Dashboard /></Admin>} />
