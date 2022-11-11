@@ -4,22 +4,27 @@ import "./Search.css"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const getData=()=>{
-    return axios.get('https://cultwear.onrender.com/products')
+// const getData=()=>{
+//     return axios.get(`https://cultwear.onrender.com/products?q={}`)
      
-  }
+//   }
 
 const Search = () => {
 const navigate=useNavigate();
 const [data,setData]=useState([])
-const handleData=()=>{
- getData().then((res)=>setData(res.data))
-  }
-    console.log(data)
+const [query,setQuery]=useState('');
+
+    
 
   useEffect(()=>{
-    handleData();
-  },[])
+    const handleData=async ()=>{
+      // getData(query).then((res)=>setData(res.data))
+    const res= await axios.get(`https://cultwear.onrender.com/products?q=${query}`);
+      setData(res.data)
+       }
+       handleData();
+       console.log(data)
+  },[query])
     const handleMan=()=>{
         navigate("/searchman")
     }
@@ -38,7 +43,7 @@ const handleData=()=>{
            
       </div>  
       <div className='search_parent'>
-        <input type="text" placeholder='ENTER SEARCH TERMS' className='search'  />
+        <input type="text" placeholder='ENTER SEARCH TERMS' className='search' onChange={(e)=>setQuery(e.target.value)} />
    
         <div className='container'>
           <div className='container1'>
@@ -53,7 +58,7 @@ const handleData=()=>{
                   <div key={ele._id} className='products'>
                   <img src={ele.images[0]} alt="" />
                     
-                  <div style={{"display":"flex", "justifyContent":"space-between"}}>
+                  <div className='title' style={{"display":"flex", "justifyContent":"space-between"}}>
                   <p>{ele.title}</p>
                   <p>₹{ele.price}</p>
                   </div>

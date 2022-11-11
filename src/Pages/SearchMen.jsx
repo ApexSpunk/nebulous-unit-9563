@@ -6,12 +6,12 @@ import "./Search.css"
 
 const SearchMen = () => {
   const dispatch=useDispatch();
-  const {loading,data,error}=useSelector(state=>state.product);
+  const { getProducts: { loading, error }, products } = useSelector(state => state.product)
   const navigate=useNavigate();
 
   useEffect(()=>{
-    dispatch(getProducts("Mens"))
-  },[])
+    dispatch(getProducts({ category: "Mens" }))
+  },[dispatch])
 
   const handleMan=()=>{
     navigate("/searchman")
@@ -35,11 +35,11 @@ const SearchMen = () => {
         <input type="text" placeholder='ENTER SEARCH TERMS' className='search'  />
       </div>
         <div className='container2'>
-            {loading?"loading": data.map(ele=>(
+            {loading?"loading": products.map(ele=>(
                   <div key={ele._id} className='products'>
                   <img src={ele.images[0]} alt="" />
                     
-                  <div style={{"display":"flex", "justifyContent":"space-between"}}>
+                  <div className='title' style={{"display":"flex", "justifyContent":"space-between"}}>
                   <p>{ele.title}</p>
                   <p>₹{ele.price}</p>
                   </div>
