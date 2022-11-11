@@ -1,46 +1,26 @@
 import { Box, Button, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getProducts, getSingleProduct } from '../Redux/products/actions';
 import SimilarProduct from './SimilarProduct';
 
 function Product() {
 
     const { id } = useParams();
-    const [productState, setProductState] = useState({
-        product: {},
-        loading: true,
-        error: false
-    });
-
-    const [searchParams, setSearchParams] = useSearchParams()
-
-    
-    
-    const { title, price, description, images, color, category, sizes } = productState.product;
-
-    const getProduct = async (id) => {
-        setProductState({ ...productState, loading: true });
-        try {
-            const response = await fetch(`https://cultwear.onrender.com/products/${id}`);
-            const data = await response.json();
-            data.data.sizes = ['XS', 'S', 'M', 'L', 'XL']
-            //set title in search params
-            setSearchParams({title:data.data.title.split(' ').join('-').toLowerCase()})
-            setProductState({ ...productState, product: data.data, loading: false });
-        } catch (error) {
-            setProductState({ ...productState, error: true, loading: false });
-        }
-    }
-
+    const dispatch = useDispatch()
+    const { getProduct: { loading, error }, singleProduct } = useSelector(state => state.product)
     useEffect(() => {
-        getProduct(id);
-    }, [id]);
-
+        dispatch(getSingleProduct(id))
+        dispatch(getProducts({ category: singleProduct.category }))
+    }, [id, dispatch])
+    singleProduct.sizes = ["S", "M", "L", "XL", "XXL"]
+    const { title, price, images, description, color, sizes } = singleProduct;
 
     return (
         <Box>
             {
-                productState.loading ? <Text>Loading...</Text> : productState.error ? <Text>Error</Text> :
+                loading ? <Text>Loading...</Text> : error ? <Text>Error</Text> :
                     <Box>
                         <Grid templateColumns="repeat(7, 1fr)" gap={6} mx={{ base: '0', md: '10', lg: '20', xl: '28' }} >
                             <GridItem colSpan={2} placeItems='end' display={{ base: 'none', lg: 'grid' }}>
@@ -100,7 +80,7 @@ function Product() {
                         </Grid>
                         <Box p={4} ml='8' mr='2' mb='4'>
                             <Text fontSize="md" fontWeight='semibold'>OTHER YOU MIGHT LIKE</Text>
-                            <SimilarProduct category={category} />
+                            <SimilarProduct />
                         </Box>
                     </Box>
             }

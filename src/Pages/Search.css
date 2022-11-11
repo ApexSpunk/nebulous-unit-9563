@@ -3,6 +3,7 @@
     width: 100%;
     font-family:  Helvetica, Arial, "sans-serif";
     height: 2rem;
+    margin-left: 12.9rem;
     
     font-size: 18px;
 }
@@ -16,7 +17,7 @@
 .search_parent{
     
     width: 85%;
-    margin-left: 13rem;
+    
     
 }
 .container{
@@ -28,6 +29,7 @@
 
 .container1{
     width: 60%;
+    margin-left: 13rem;
 }
 
 .container1 h1{
@@ -45,7 +47,30 @@
 }
 
 .container2{
-    border: 1px solid;
-    height: 500rem;
-    width: 300rem;
+    
+   
+    width: 92rem;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 1.5rem;
+    
+    
+}
+
+.products img{
+    width: 14rem;
+}
+
+.products p{
+    font-size: 11px;
+}
+
+.section{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.section p{
+    font-size: 12px;
 }
