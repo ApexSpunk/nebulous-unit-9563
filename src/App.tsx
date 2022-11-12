@@ -9,8 +9,7 @@ import Register from './Components/loginLogout/Register';
 function App() {
   return (
     <>
-      {/* <AllRoutes /> */}
-      <Register/>
+      <AllRoutes />
     </>
   );
 }

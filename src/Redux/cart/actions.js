@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ADD_TO_CART_FAILURE, ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, GET_CART_FAILURE, GET_CART_REQUEST, GET_CART_SUCCESS, REMOVE_FROM_CART_FAILURE, REMOVE_FROM_CART_REQUEST, REMOVE_FROM_CART_SUCCESS, UPDATE_CART_FAILURE, UPDATE_CART_REQUEST, UPDATE_CART_SUCCESS } from "./actionTypes";
 import Cookies from "js-cookie";
+import { useToast } from "@chakra-ui/react";
 
 export const getCart = () => async (dispatch) => {
     try {
@@ -10,9 +11,9 @@ export const getCart = () => async (dispatch) => {
                 token: Cookies.get("token"),
             },
         });
+        console.log(res.data);
         dispatch({ type: GET_CART_SUCCESS, payload: res.data.data });
     } catch (error) {
-        console.log(error);
         dispatch({
             type: GET_CART_FAILURE,
         });

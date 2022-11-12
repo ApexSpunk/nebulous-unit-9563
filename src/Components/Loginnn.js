@@ -16,8 +16,6 @@ function Login() {
 
     const { userLogin: { loading, error, message }, data: { isAuthenticated, token, user } } = useSelector(state => state.auth);
 
-    console.log(isAuthenticated, token, user);
-
     return (
         <Box w="100%" h="100vh" bg="gray.100">
             <Input type="email" placeholder="Email" value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })} />
