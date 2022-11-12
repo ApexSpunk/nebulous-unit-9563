@@ -5,9 +5,8 @@ import Dashboard from "../Components/Admin/Dashboard";
 import Products from "../Components/Admin/Products";
 import Admin from "./Admin";
 import Home from "./Home";
-import Womens from "./Womens";
-import Mens from "./Mens";
-import Childs from "./Childs";
+import ProductsData from "./ProductsData";
+
 import Search from "./Search";
 import Payment from "./payment";
 import Product from '../Components/Product';
@@ -23,9 +22,8 @@ const AllRoutes = () => {
             <Route path = "/register" element = {<><Header /><Register /></>}></Route>
             <Route path="/" element={<><Header page='home' /><Home /></>} />
             <Route path="/search" element={<><Header /><Search /><Home /></>} />
-            <Route path="/womens" element={<><Header /><Womens /></>} />
+            <Route path="/productsData" element={<><Header /><ProductsData /></>} />
             <Route path="/loginnn" element={<><Header /><Login /></>} />
-            <Route path="/cart" element={<><Header /><Cart /></>} />
             <Route path="/mens" element={<><Header /><Mens /></>} />
             <Route path="/childs" element={<><Header /><Childs /></>} />
             <Route path="/product/:id" element={<><Header /><Product /></>} />
