@@ -5,15 +5,15 @@ import { updateProductInCart } from "../../Redux/cart/actions";
 export default function CartSingleCard({title,price,images,color,quantity,category,_id}){
     let dispach=useDispatch()
     return (
-        <Box w="400px">
+        <Box w="400px" >
             <Text>{title}</Text>
             <Flex gap="2">
                 <Box>
                     
-                    <Image src={images[1]} />
+                    <Image  h="370px" src={images[1]} />
                 </Box>
-                <Flex direction={"column"} justifyContent="space-between">
-                    <VStack>
+                <Flex height="370px" direction={"column"} justifyContent="space-between">
+                    <VStack alignItems={"flex-start"} >
                         <Text>{category}</Text>
                         <Text>{color}</Text>
                         <Text>size</Text>
@@ -28,7 +28,7 @@ export default function CartSingleCard({title,price,images,color,quantity,catego
                     <HStack>
                         <Text>₹ {price}</Text>
                     </HStack>
-                    <VStack>
+                    <VStack alignItems={"flex-start"}>
                         <Text>SAVE FOR LETER</Text>
                         <Text>Delete</Text>
                     </VStack>
