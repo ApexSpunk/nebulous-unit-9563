@@ -1,0 +1,37 @@
+{
+  "UserINFO": [
+    {
+      "email": "tshart@gmail.com",
+      "password": "123",
+      "resetPassword": "123",
+      "name": "T-Shart",
+      "pinCode": "854201",
+      "address": "Hjg",
+      "optional": "adidas",
+      "locality": "adidas",
+      "city": "adidas",
+      "state": "Mumbai",
+      "phoneNumber": "2134567890",
+      "news": false,
+      "termCondition": true,
+      "id": 1
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,4 +1,5 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 import {
     GET_PRODUCT, GET_PRODUCT_LOADING, GET_PRODUCT_ERROR,
     GET_PRODUCTS, GET_PRODUCTS_LOADING, GET_PRODUCTS_ERROR,
@@ -7,9 +8,6 @@ import {
     DELETE_PRODUCT, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_ERROR,
     
 } from "./actionTypes";
-
-const token = '636aad2323c2e54f773ad8f9:chandan@gmail.com:123'
-
 
 export const getProducts = (params) => async (dispatch) => {
     let query = ''
@@ -40,7 +38,7 @@ export const addProduct = (product) => async (dispatch) => {
         dispatch({ type: ADD_PRODUCT_LOADING })
         const response = await axios.post('https://cultwear.onrender.com/products', product, {
             headers: {
-                'token': token
+                'token': Cookies.get('token')
             }
         });
         dispatch({ type: ADD_PRODUCT, payload: response.data.data })
@@ -54,7 +52,7 @@ export const updateProduct = (id, product) => async (dispatch) => {
         dispatch({ type: UPDATE_PRODUCT_LOADING })
         const response = await axios.patch(`https://cultwear.onrender.com/products/${id}`, product, {
             headers: {
-                'token': token
+                'token': Cookies.get('token')
             }
         });
         dispatch({ type: UPDATE_PRODUCT, payload: response.data.data })
@@ -68,7 +66,7 @@ export const deleteProduct = (id) => async (dispatch) => {
         dispatch({ type: DELETE_PRODUCT_LOADING })
         const response = await axios.delete(`https://cultwear.onrender.com/products/${id}`, {
             headers: {
-                'token': token
+                'token': Cookies.get('token')
             }
         });
         dispatch({ type: DELETE_PRODUCT, payload: response.data.data })
