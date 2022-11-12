@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, GridItem, Image, Text, useToast } from '@chakra-ui/react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -11,12 +11,14 @@ function Product() {
     const { id } = useParams();
     const dispatch = useDispatch()
     const { getProduct: { loading, error }, singleProduct } = useSelector(state => state.product)
+    const { carts } = useSelector(state => state.cart)
     useEffect(() => {
         dispatch(getSingleProduct(id))
-        dispatch(getProducts({ category: singleProduct.category }))
+        dispatch(getProducts({ category: singleProduct.category  }))
     }, [id, dispatch])
     singleProduct.sizes = ["S", "M", "L", "XL", "XXL"]
     const { title, price, images, description, color, sizes } = singleProduct;
+    const toast = useToast()
 
     return (
         <Box>
@@ -72,7 +74,31 @@ function Product() {
                                             <Text fontSize="xs" color='gray.500'>SIZE GUIDE</Text>
                                         </Flex>
                                         <Box h='1px' bg='gray.200' mt='2' mb={6}></Box>
-                                        <Button onClick={()=>dispatch(addProductToCart(id))} mt='2' p='5' w='full' bg='black' rounded='none' size="sm" color='white' _hover={{ bg: 'black' }} _active={{ bg: 'black' }} _focus={{ bg: 'black' }}>ADD TO BAG</Button>
+                                        <Button onClick={() => {
+                                            dispatch(addProductToCart(id))
+                                            // find product in cart
+                                            console.log(carts)
+                                            const product = carts.find(product => product.productId === id)
+                                            // if product is in cart
+                                            if (product) {
+                                                toast({
+                                                    title: `${title} is already in your cart.`,
+                                                    description: "We have updated the quantity.",
+                                                    status: "warning",
+                                                    duration: 2000,
+                                                    isClosable: true,
+                                                })
+                                            }else{
+                                                toast({
+                                                    title: `${title} is added to your cart.`,
+                                                    description: "Please check your cart.",
+                                                    status: "success",
+                                                    duration: 2000,
+                                                    isClosable: true,
+                                                })
+                                            }
+
+                                        }} mt='2' p='5' w='full' bg='black' rounded='none' size="sm" color='white' _hover={{ bg: 'black' }} _active={{ bg: 'black' }} _focus={{ bg: 'black' }}>ADD TO BAG</Button>
                                         <Text fontSize="xs" mt='8' mb='2'>CHECK IN-STORE AVAILABILITY</Text>
                                         <Text fontSize="xs" my='2'>DELIVERY, EXCHANGES AND RETURNS</Text>
                                     </Box>

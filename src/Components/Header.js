@@ -36,8 +36,8 @@ function Header({ page }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCart());
-  }, [dispatch, carts]);
+    dispatch(getCart())
+  }, [dispatch, isAuthenticated])
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -51,24 +51,10 @@ function Header({ page }) {
       top={page == "home" ? 0 : isOpen ? "1" : "-30%"}
     >
       <Flex>
-        <Flex>
-          <Box onClick={() => setMenuOpen(!menuOpen)}>
-            <Image
-              w="30px"
-              mx="8"
-              cursor="pointer"
-              src="/menu.png"
-              display={menuOpen ? "none" : "block"}
-            />
-            <Image
-              w="30px"
-              p="6px"
-              mt="0"
-              mx="8"
-              cursor="pointer"
-              src="https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/x-22.png"
-              display={menuOpen ? "block" : "none"}
-            />
+        <Flex >
+          <Box onClick={() => setMenuOpen(!menuOpen)} >
+            <Image w='30px' mx='8' cursor='pointer' src='https://cultwear.netlify.app/menu.png' display={menuOpen ? 'none' : 'block'} />
+            <Image w='30px' p='6px' mt='0' mx='8' cursor='pointer' src='https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/x-22.png' display={menuOpen ? 'block' : 'none'} />
           </Box>
           <Box>
             <Link to="/">
@@ -103,11 +89,9 @@ function Header({ page }) {
             </Link>
             <Text fontSize="sm">HELP</Text>
           </Box>
-          <Box mx="7">
-            <Image src="./cart.png" w="45px" />
-            <Text fontSize="sm" position="absolute" mt="-32px" ml="17px">
-              {carts.length}
-            </Text>
+          <Box mx='7'>
+            <Image src='https://cultwear.netlify.app/cart.png' w='45px' />
+            <Text fontSize='sm' position='absolute' mt='-32px' ml='17px'>{carts.length}</Text>
           </Box>
         </Flex>
       </Flex>

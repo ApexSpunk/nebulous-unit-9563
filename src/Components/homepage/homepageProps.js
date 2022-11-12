@@ -14,6 +14,6 @@ import kidvid from "../homepagePhotos/kidvid.mp4"
 export const woman=[{item:img1,isvedio:false,isdark:true},{item:img2,isvedio:false,isdark:false},{item:img3,isvedio:false,isdark:true},{item:img4,isvedio:false,isdark:false},{item:img5,isvedio:false,isdark:false}];
 export let man=[{item:man1,isvedio:false,isdark:false},{item:vid1,isvedio:true,isdark:true},{item:man2,isvedio:false,isdark:true},{item:img5,isvedio:false}];
 export let kids=[{item:kid1,isvedio:false,isdark:false},{item:kidvid,isvedio:true,isdark:false},{item:kid2,isvedio:false,isdark:false},{item:kid3,isvedio:false,isdark:false},{item:img5,isvedio:false,isdark:false}]
-export let womanLinks=[{text:"NEW"},{text:"BEST SELLERS"},{text:"PARTY"},{text:"SHOES"}]
-export let manLinks=[{text:"NEW"},{text:"PARTY"},{text:"ZARA ATHLETICZ"},{text:"ZARA ORIGINS"}]
-export let kidLinks=[{text:"GIRL"},{text:"BOY"},{text:"BABY GIRL"},{text:"BABY BOY"},{text:"MINI"}]
+export let womanLinks=[{text:"NEW",path:"/womens"},{text:"BEST SELLERS",path:"/womens"},{text:"PARTY",path:"/womens"},{text:"SHOES",path:"/womens"}]
+export let manLinks=[{text:"NEW",path:"/mens"},{text:"PARTY",path:"/mens"},{text:"ZARA ATHLETICZ",path:"/mens"},{text:"ZARA ORIGINS",path:"/mens"}]
+export let kidLinks=[{text:"GIRL",path:"/childs"},{text:"BOY",path:"/childs"},{text:"BABY GIRL",path:"/childs"},{text:"BABY BOY",path:"/childs"},{text:"MINI",path:"/childs"}]

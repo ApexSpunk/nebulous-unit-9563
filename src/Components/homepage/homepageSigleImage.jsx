@@ -30,6 +30,7 @@ export default function  SigngleImage({el,isup,cindex,images,toggle,links}){
     
     {cindex!==(images.length-1)&&<PageLinks links={links} />}
  {  cindex===(images.length-1)&&<Footer />}
+ {/* /// */}
     </Box>
    )
 

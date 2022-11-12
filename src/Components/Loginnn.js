@@ -5,41 +5,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { authLogin } from "../Redux/auth/actions";
 
 function Login() {
-  const [loginData, setLoginData] = React.useState({ email: "", password: "" });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
-  };
+    const [loginData, setLoginData] = React.useState({ email: '', password: '' });
 
-  const dispatch = useDispatch();
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setLoginData({ ...loginData, [name]: value });
+    }
 
-  const {
-    userLogin: { loading, error, message },
-    data: { isAuthenticated, token, user },
-  } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
-  console.log(isAuthenticated, token, user);
+    const { userLogin: { loading, error, message }, data: { isAuthenticated, token, user } } = useSelector(state => state.auth);
 
-  return (
-    <Box w="100%" h="100vh" bg="gray.100">
-      <Input
-        type="email"
-        placeholder="Email"
-        value={loginData.email}
-        onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
-      />
-      <Input
-        type="password"
-        placeholder="Password"
-        value={loginData.password}
-        onChange={(e) =>
-          setLoginData({ ...loginData, password: e.target.value })
-        }
-      />
-      <Button onClick={() => dispatch(authLogin(loginData))}>Login</Button>
-    </Box>
-  );
+    return (
+        <Box w="100%" h="100vh" bg="gray.100">
+            <Input type="email" placeholder="Email" value={loginData.email} onChange={(e) => setLoginData({ ...loginData, email: e.target.value })} />
+            <Input type="password" placeholder="Password" value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
+            <Button onClick={() => dispatch(authLogin(loginData))}>Login</Button>
+        </Box>
+
+    )
 }
 
 export default Login;
