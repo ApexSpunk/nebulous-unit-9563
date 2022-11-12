@@ -35,7 +35,7 @@ function Header({ page }) {
 
   useEffect(() => {
     dispatch(getCart())
-  }, [dispatch, carts])
+  }, [dispatch, isAuthenticated])
 
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -44,7 +44,7 @@ function Header({ page }) {
       <Flex>
         <Flex >
           <Box onClick={() => setMenuOpen(!menuOpen)} >
-            <Image w='30px' mx='8' cursor='pointer' src='/menu.png' display={menuOpen ? 'none' : 'block'} />
+            <Image w='30px' mx='8' cursor='pointer' src='https://cultwear.netlify.app/menu.png' display={menuOpen ? 'none' : 'block'} />
             <Image w='30px' p='6px' mt='0' mx='8' cursor='pointer' src='https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/x-22.png' display={menuOpen ? 'block' : 'none'} />
           </Box>
           <Box>
@@ -66,7 +66,7 @@ function Header({ page }) {
             <Text fontSize='sm'>HELP</Text>
           </Box>
           <Box mx='7'>
-            <Image src='./cart.png' w='45px' />
+            <Image src='https://cultwear.netlify.app/cart.png' w='45px' />
             <Text fontSize='sm' position='absolute' mt='-32px' ml='17px'>{carts.length}</Text>
           </Box>
         </Flex>
