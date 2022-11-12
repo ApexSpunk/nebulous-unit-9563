@@ -10,9 +10,8 @@ import UserLoginComponent from './Components/loginLogout/UserLoginComponent';
 function App() {
   return (
     <>
-      {/* <AllRoutes /> */}
-      <Register/>
-      {/* <UserLoginComponent/> */}
+      <AllRoutes />
+      {/* <Register/> */}
     </>
   );
 }

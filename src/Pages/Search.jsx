@@ -1,76 +1,120 @@
-import React from 'react';
-import {useState,useEffect} from 'react'
-import "./Search.css"
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-// const getData=()=>{
-//     return axios.get(`https://cultwear.onrender.com/products?q={}`)
-     
-//   }
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Image,
+  Input,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../Redux/products/actions";
 
 const Search = () => {
-const navigate=useNavigate();
-const [data,setData]=useState([])
-const [query,setQuery]=useState('');
+  const [query, setQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-    
+  useEffect(() => {
+    dispatch(getProducts({ q: query }));
+  }, [query]);
 
-  useEffect(()=>{
-    const handleData=async ()=>{
-      // getData(query).then((res)=>setData(res.data))
-    const res= await axios.get(`https://cultwear.onrender.com/products?q=${query}`);
-      setData(res.data)
-       }
-       handleData();
-       console.log(data)
-  },[query])
-    const handleMan=()=>{
-        navigate("/searchman")
-    }
+  const dispatch = useDispatch();
+  const {
+    getProducts: { loading, error },
+    products,
+  } = useSelector((state) => state.product);
 
-    const handleWoman=()=>{
-        navigate("/searchwoman")
-    }
+  const handleWomen = () => {
+    navigate("/womens");
+  };
+
+  const handleMen = () => {
+    navigate("/mens");
+  };
+
+  const handleChild = () => {
+    navigate("/childs");
+  };
+
   return (
-    <div>
-      <div className='section'>
-        
-                <p onClick={handleWoman}>WOMAN</p>
-                <p onClick={handleMan}>MAN</p>
-                <p>KIDS</p>
-            
-           
-      </div>  
-      <div className='search_parent'>
-        <input type="text" placeholder='ENTER SEARCH TERMS' className='search' onChange={(e)=>setQuery(e.target.value)} />
-   
-        <div className='container'>
-          <div className='container1'>
-            <h1>TRENDS</h1>
-            <p>DRESS</p>
-            <p>TOP</p>
-            <p>SKIRT</p>
-            <p>DRESS FOR WOMAN</p>
-          </div>
-          <div className='container2'>
-            {data && data.data && data.data.map(ele=>(
-                  <div key={ele._id} className='products'>
-                  <img src={ele.images[0]} alt="" />
-                    
-                  <div className='title' style={{"display":"flex", "justifyContent":"space-between"}}>
-                  <p>{ele.title}</p>
-                  <p>₹{ele.price}</p>
-                  </div>
-                  
-                </div>
-                ))}
-          </div>
-        </div>
-    </div>
-    </div>  
-   
-  )
-}
+    <Box>
+      <Flex gap="4" mt="4">
+        <Spacer />
+        <Text fontSize="xs" onClick={handleWomen}>
+          WOMAN
+        </Text>
+        <Text fontSize="xs" onClick={handleMen}>
+          MAN
+        </Text>
+        <Text fontSize="xs" onClick={handleChild}>
+          KIDS
+        </Text>
+        <Spacer />
+      </Flex>
+      <Box mx="24" mt="8">
+        <Input
+          type="text"
+          placeholder="ENTER SEARCH TERMS"
+          onChange={(e) => setQuery(e.target.value)}
+          border="none"
+          borderRadius="none"
+          borderBottom="1px solid black"
+          _placeholder={{ color: "black", textDecorations: "uppercase" }}
+          outline="none"
+          onClick={() => setIsOpen(true)}
+        />
+        <Box>
+          <Box display={isOpen ? "block" : "none"} mt="8">
+            <Text fontSize="sm">TRENDS</Text>
+            <Text fontSize="sm">DRESS</Text>
+            <Text fontSize="sm">TOP</Text>
+            <Text fontSize="sm">SKIRT</Text>
+            <Text fontSize="sm">DRESS FOR WOMAN</Text>
+          </Box>
+        </Box>
+      </Box>
 
-export default Search
+      {loading ? (
+        <Text mx="24" mt="12">
+          Loading...
+        </Text>
+      ) : products.length == 0 ? (
+        <Text mt="12" mx="24">
+          No products found
+        </Text>
+      ) : (
+        query.length > 0 && (
+          <Grid mx="16" templateColumns="repeat(6, 1fr)" gap={6} mt="8">
+            {products.map((ele) => (
+              <Link
+                to={`/product/${ele._id}`}
+                onClick={() =>
+                  dispatch(getProducts({ category: ele.category }))
+                }
+              >
+                <GridItem
+                  key={ele._id}
+                  colSpan={{ base: 6, md: 2, lg: 1, xl: 1 }}
+                >
+                  <Image src={ele.images[ele.images.length - 3]} alt="" />
+                  <Box>
+                    <Text fontSize="xs">{ele.title}</Text>
+                    <Text fontSize="xs">₹{ele.price}</Text>
+                  </Box>
+                </GridItem>
+              </Link>
+            ))}
+          </Grid>
+        )
+      )}
+    </Box>
+  );
+};
+
+export default Search;
