@@ -2,8 +2,13 @@ import React from "react";
 import "./payment.css";
 import { MdChatBubbleOutline } from "react-icons/md";
 import { Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
+  const navigate = useNavigate();
+  const handlePay = () => {
+    navigate("/checkout");
+  };
   return (
     <div className="parent">
       <h1 className="headline">CHOOSE A PAYMENT METHOD </h1>
@@ -96,7 +101,7 @@ const Payment = () => {
 
         <div className="money">
           <p>Totakl: ₹ 9,270.00 INCLUDING GST</p>
-          <Button>Continue</Button>
+          <Button onClick={handlePay}>Continue</Button>
         </div>
       </div>
     </div>
