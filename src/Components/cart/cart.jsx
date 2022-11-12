@@ -1,4 +1,4 @@
-import {Box, Flex} from "@chakra-ui/react"
+import {Box, Button, Flex, Text} from "@chakra-ui/react"
 import { useSelector } from "react-redux"
 import CartSingleCard from "./cartSingleCard"
 export default function Cart(){
@@ -6,9 +6,10 @@ export default function Cart(){
    console.log(carts)
    
     return (
-        <Box display={"grid"} justifyItems={"flex-end"} mt={100} p={10}>
+        <Box display={"grid"} justifyItems={"flex-end"} mt={100} p={10} fontSize={12}>
            <Box display={"flex"}  w="100%" overflowX={"hidden"} scrollBehavior={"smooth"}>
             <Box display={"flex"} flexDirection={{base:"column",md:"row"}}
+            
              css={{
                 '&::-webkit-scrollbar': {
                   width: '1px',
@@ -35,9 +36,10 @@ export default function Cart(){
             
            </Box >
            </Box>
-           <Box>
-              <Flex>
-
+           <Box pos={"absolute"} bottom={"0px"} w="22%" >
+              <Flex justifyContent={"space-between"} fontSize={10}>
+                    <Text>TOTAL   ₹ total <br/>INCLUDING GST<br/>EXCL SHIPPING COST</Text>
+                    <Box w="60%"  ><Button w="100%"  bgColor="black" color={"white"}  >CONTINUE</Button></Box>
               </Flex>
 
            </Box>

@@ -8,7 +8,7 @@ export default function PageLinks({links}){
                              {links.map((el)=>{
                                 return(
                                    <>
-                                    <Link to={`/${el.text}`}>{el.text}</Link>
+                                    <Link to={el.path}>{el.text}</Link>
                                    </>
                                 )
                              })}
