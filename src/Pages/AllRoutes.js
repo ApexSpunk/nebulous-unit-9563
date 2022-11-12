@@ -10,8 +10,6 @@ import Womens from "./Womens";
 import Mens from "./Mens";
 import Childs from "./Childs";
 import Search from "./Search";
-import SearchMen from "./SearchMen";
-import SearchWoman from "./SearchWoman";
 import Payment from "./payment";
 import Product from '../Components/Product';
 import Login from "../Components/Loginnn";
@@ -24,15 +22,13 @@ const AllRoutes = () => {
             <Route path='/login' element = {<><Header /><UserLoginComponent /></>}/>
             <Route path = "/register" element = {<><Header /><Register /></>}></Route>
             <Route path="/" element={<><Header page='home' /><Home /></>} />
-            <Route path="/search" element={<><Header /><Search /><Home /></>} />
+            <Route path="/search" element={<><Header /><Search /></>} />
             <Route path="/womens" element={<><Header /><Womens /></>} />
             <Route path="/loginnn" element={<><Header /><Login /></>} />
             <Route path="/mens" element={<><Header /><Mens /></>} />
             <Route path="/childs" element={<><Header /><Childs /></>} />
             <Route path="/product/:id" element={<><Header /><Product /></>} />
             <Route path="/payment" element={<><Header /><Payment /></>} />
-            <Route path="searchman" element={<SearchMen />} />
-            <Route path="searchwoman" element={<SearchWoman />} />
             <Route path="/admin" element={<Admin><Dashboard /></Admin>} />
             <Route path="/admin/products" element={<Admin><Products /></Admin>} />
             <Route path="*" element={<h2>404 Not Found</h2>} />
