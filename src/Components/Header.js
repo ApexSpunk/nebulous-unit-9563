@@ -89,10 +89,12 @@ function Header({ page }) {
             </Link>
             <Text fontSize="sm">HELP</Text>
           </Box>
-          <Box mx='7'>
-            <Image src='https://cultwear.netlify.app/cart.png' w='45px' />
-            <Text fontSize='sm' position='absolute' mt='-32px' ml='17px'>{carts.length}</Text>
-          </Box>
+          <Link to="/cart">
+            <Box mx='7'>
+              <Image src='https://cultwear.netlify.app/cart.png' w='45px' />
+              <Text fontSize='sm' position='absolute' mt='-32px' ml='17px'>{carts.length}</Text>
+            </Box>
+          </Link>
         </Flex>
       </Flex>
       {/* make sidebar */}

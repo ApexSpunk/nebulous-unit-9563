@@ -49,26 +49,16 @@ export const addProductToCart = (id) => async (dispatch) => {
 export const updateProductInCart = (id, quantity) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_CART_REQUEST });
-        const res = await axios.post(`https://cultwear.onrender.com/cart`, {"quantity":quantity}, {
+        const res = await axios.put(`https://cultwear.onrender.com/cart/${id}`, {quantity}, {
             headers: {
                 token: Cookies.get("token"),
             },
         });
-        // const res = await axios.put(`https://cultwear.onrender.com/cart/${id}`, {
-        //     body: {
-        //         quantity: quantity
-        //     },
-        //     headers: {
-        //         token: Cookies.get("token"),
-        //     },
-        // });
-        // console.log('res: ', res);
-
         dispatch({
             type: UPDATE_CART_SUCCESS,
 
             payload: {
-                updatedItem: res.data.updatedItem,
+                updatedItem: res.data.data,
                 message: res.data.message
             }
         });
@@ -88,9 +78,9 @@ export const removeProductFromCart = (id) => async (dispatch) => {
     try {
         dispatch({ type: REMOVE_FROM_CART_REQUEST });
 
-        const res = await axios.delete(`/api/cart/${id}`, {
+        const res = await axios.delete(`https://cultwear.onrender.com/cart/${id}`, {
             headers: {
-                token: `Bearer ${localStorage.getItem("token")}`,
+                token: Cookies.get("token"),
             },
         });
         console.log('res: ', res);

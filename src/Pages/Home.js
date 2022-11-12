@@ -1,5 +1,5 @@
 import React from 'react'
-import Cart from '../Components/cart/cart'
+import Cart from './Cart'
 import HomePageComCarosel from '../Components/homepage/homePageComCarosel'
 
 function Home() {

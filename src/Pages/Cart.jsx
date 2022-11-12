@@ -1,9 +1,8 @@
 import {Box, Button, Flex, Text} from "@chakra-ui/react"
 import { useSelector } from "react-redux"
-import CartSingleCard from "./cartSingleCard"
+import CartSingleCard from "../Components/cartSingleCard"
 export default function Cart(){
    let {carts}=useSelector((store)=>store.cart)
-   console.log(carts)
    
     return (
         <Box display={"grid"} justifyItems={"flex-end"} mt={100} p={10} fontSize={12}>
