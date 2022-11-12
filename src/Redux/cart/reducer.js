@@ -64,7 +64,7 @@ import {
             ...state,
             loading: false,
             error: false,
-            carts: [...state.carts, payload],
+            carts: [...state.carts, payload.newCartItem],
           };
         }
       case ADD_TO_CART_FAILURE:

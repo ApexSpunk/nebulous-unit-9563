@@ -1,0 +1,87 @@
+.parent {
+  margin-left: 13rem;
+  font-family: Neue-Helvetica, Helvetica, Arial, "sans-serif";
+}
+
+.headline {
+  margin-top: 5rem;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.warning {
+  border: 1px solid #e8e8e8;
+  color: #ffa029;
+  width: 35rem;
+  font-size: 13px;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.payment_cards {
+  display: flex;
+  width: 60rem;
+  gap: 1.2rem;
+  height: 8rem;
+  margin-top: 3rem;
+}
+
+.payment_cards div {
+  border: 1px solid #efefef;
+  width: 20rem;
+}
+
+.payment_cards img {
+  height: 5rem;
+}
+
+.payment_cards p {
+  font-size: 11px;
+
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+.remain_cards {
+  border: 1px solid #e8e8e8;
+  width: 9rem;
+  gap: 20px;
+  margin-top: 1.2rem;
+  height: 8rem;
+}
+
+.remain_cards img {
+  height: 5rem;
+}
+
+.remain_cards p {
+  font-size: 11px;
+  text-align: center;
+}
+
+.footline {
+  margin-left: 60rem;
+}
+.chat {
+  border: 1px solid #e8e8e8;
+  width: 7rem;
+  padding: 0.7rem;
+  display: flex;
+  margin-bottom: 1rem;
+  margin-left: 27rem;
+}
+.chat h1 {
+  font-size: 11px;
+  font-family: Neue-Helvetica, Helvetica, Arial, "sans-serif";
+  font-weight: bold;
+}
+.money {
+  display: flex;
+  gap: 30px;
+}
+.money button {
+  background-color: black;
+  color: white;
+  width: 17rem;
+  border-radius: 0;
+}
