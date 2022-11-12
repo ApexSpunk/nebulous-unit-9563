@@ -1,10 +1,11 @@
-import { Box, Button, Input, InputGroup } from '@chakra-ui/react';
-import React from 'react'
-import Cookies from 'js-cookie';
-import { useDispatch, useSelector } from 'react-redux';
-import { authLogin } from '../Redux/auth/actions';
+import { Box, Button, Input, InputGroup } from "@chakra-ui/react";
+import React from "react";
+import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogin } from "../Redux/auth/actions";
 
 function Login() {
+
     const [loginData, setLoginData] = React.useState({ email: '', password: '' });
 
     const handleChange = (e) => {
@@ -26,4 +27,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Login;
