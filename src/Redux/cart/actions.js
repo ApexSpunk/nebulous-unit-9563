@@ -49,16 +49,20 @@ export const addProductToCart = (id) => async (dispatch) => {
 export const updateProductInCart = (id, quantity) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_CART_REQUEST });
-
-        const res = await axios.put(`/api/cart/${id}`, {
-            body: {
-                quantity: quantity
-            },
+        const res = await axios.post(`https://cultwear.onrender.com/cart`, {"quantity":quantity}, {
             headers: {
-                token: `Bearer ${localStorage.getItem("token")}`,
+                token: Cookies.get("token"),
             },
         });
-        console.log('res: ', res);
+        // const res = await axios.put(`https://cultwear.onrender.com/cart/${id}`, {
+        //     body: {
+        //         quantity: quantity
+        //     },
+        //     headers: {
+        //         token: Cookies.get("token"),
+        //     },
+        // });
+        // console.log('res: ', res);
 
         dispatch({
             type: UPDATE_CART_SUCCESS,
@@ -69,6 +73,7 @@ export const updateProductInCart = (id, quantity) => async (dispatch) => {
             }
         });
     } catch (error) {
+        console.log(error)
         dispatch({
             type: UPDATE_CART_FAILURE,
             payload: { message: error.message }
