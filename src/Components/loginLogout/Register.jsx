@@ -33,7 +33,7 @@ const Register = () => {
 
     const handelCreateAcc = ()=>{
         handelApi()
-        alert("User Creaded!!!")
+        alert("User Created!!!")
     }
 
     return (
