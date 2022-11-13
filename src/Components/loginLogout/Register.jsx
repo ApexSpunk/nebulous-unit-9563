@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import "./register.css"
 
 const Register = () => {
@@ -19,6 +19,7 @@ const Register = () => {
         news:false,
         termCondition:false
     })
+    const navigate = useNavigate()
     const handelInput = (e)=>{
         const {name, value, type, checked}  = e.target
         const newValue = type==="checkbox"?checked:value
@@ -28,6 +29,7 @@ const Register = () => {
     const handelApi  = ()=>{
         axios.post("http://localhost:8080/UserINFO",data).then(res=>{
             console.log(res.data);
+            navigate("/login")
         }).catch(err=>{
             console.log(err);
         })
@@ -45,13 +47,13 @@ const Register = () => {
                 <h2>PERSONAL DETAILS</h2>
             </div>
             <div className='radio'>
-                <div>
-                    <input style={{ fontSize:"10px"}} type="radio" name="" id=""  onChnage = {handelInput} />
+                <div className='insideRadio'>
+                    <input style={{ fontSize:"10px"}} type="radio" name="" id=""  onChange = {handelInput} />
                     <label style={{marginLeft:"10px",fontSize:"10px"}} htmlFor="">PERSONAL</label>
                 </div>
-                <div>
-                    <input style={{marginLeft:"20px", fontSize:"10px"}} type="radio" name="" id=""  onChnage = {handelInput} />
-                    <label style={{marginLeft:"10px",fontSize:"10px", marginTop:'10px'}} htmlFor="">COMPANY</label>
+                <div className='insideRadio'>
+                    <input style={{marginLeft:"20px", fontSize:"10px"}} type="radio" name="" id=""  onChange = {handelInput} />
+                    <label style={{marginLeft:"10px",fontSize:"10px"}} htmlFor="">COMPANY</label>
                 </div>
             </div>
             <div>
