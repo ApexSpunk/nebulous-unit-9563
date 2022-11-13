@@ -30,31 +30,31 @@ const Search = () => {
     products,
   } = useSelector((state) => state.product);
 
-  const handleWomen = () => {
-    navigate("/womens");
-  };
+  // const handleWomen = () => {
+  //   navigate("/womens");
+  // };
 
-  const handleMen = () => {
-    navigate("/mens");
-  };
+  // const handleMen = () => {
+  //   navigate("/mens");
+  // };
 
-  const handleChild = () => {
-    navigate("/childs");
-  };
+  // const handleChild = () => {
+  //   navigate("/childs");
+  // };
 
   return (
     <Box>
       <Flex gap="4" mt="4">
         <Spacer />
-        <Text fontSize="xs" onClick={handleWomen}>
-          WOMAN
-        </Text>
-        <Text fontSize="xs" onClick={handleMen}>
-          MAN
-        </Text>
-        <Text fontSize="xs" onClick={handleChild}>
-          KIDS
-        </Text>
+        <Link to="/store?category=womens">
+          <Text fontSize="xs">WOMAN</Text>
+        </Link>
+        <Link to="/store?category=mens">
+          <Text fontSize="xs">MAN</Text>
+        </Link>
+        <Link to="/store?category=kids">
+          <Text fontSize="xs">KIDS</Text>
+        </Link>
         <Spacer />
       </Flex>
       <Box mx="24" mt="8">
