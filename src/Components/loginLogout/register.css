@@ -1,0 +1,27 @@
+.mains{
+    margin-top: 5em;
+    margin-left: 9em;
+}
+.detail{
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 3em;
+}
+.radio{
+    display: flex;
+}
+/* .radio> */
+
+.inp{
+    font-size: 9px;
+    outline: none;
+    border-bottom: 0.5px solid black;
+    width: 28%;
+    margin-bottom: 26px;
+}
+.tel{
+    outline: none;
+    border-bottom: 0.5px solid black;
+    font-size: 9px;
+    width: 22.8%;
+}
