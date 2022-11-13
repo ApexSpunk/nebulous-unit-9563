@@ -3,8 +3,11 @@ import "./payment.css";
 import { MdChatBubbleOutline } from "react-icons/md";
 import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Payment = () => {
+  let {total}=useSelector((store)=>store.cart)
+
   const navigate = useNavigate();
   const handlePay = () => {
     navigate("/checkout");
@@ -100,7 +103,7 @@ const Payment = () => {
         </div>
 
         <div className="money">
-          <p>Totakl: ₹ 9,270.00 INCLUDING GST</p>
+          <p>Totakl: ₹ {total} INCLUDING GST</p>
           <Button onClick={handlePay}>Continue</Button>
         </div>
       </div>

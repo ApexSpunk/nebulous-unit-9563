@@ -13,8 +13,10 @@ import {
 } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
+  let {total}=useSelector((store)=>store.cart)
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
   const navigate = useNavigate();
@@ -121,7 +123,7 @@ const Checkout = () => {
         </div>
 
         <div className="money">
-          <p>Total: ₹ 9,270.00 INCLUDING GST</p>
+          <p>Total: ₹ {total} INCLUDING GST</p>
           <Button onClick={onOpen}>Continue</Button>
           <AlertDialog
             motionPreset="slideInBottom"
