@@ -2,12 +2,14 @@ import { Box, Flex, Image, Input, Spacer, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { authLogout } from "../Redux/auth/actions";
 import { getCart } from "../Redux/cart/actions";
 const Cookies = require("js-cookie");
 
 function Header({ page }) {
   const [navbar, setNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useSelector(state => state.theme)
 
   useEffect(() => {
     const changeBackground = () => {
@@ -53,7 +55,7 @@ function Header({ page }) {
       <Flex>
         <Flex >
           <Box onClick={() => setMenuOpen(!menuOpen)} >
-            <Image w='30px' mx='8' cursor='pointer' src='https://cultwear.netlify.app/menu.png' display={menuOpen ? 'none' : 'block'} />
+            <Image className={page == 'home' ? theme.textColor == 'white' ? 'yourImage' : null : null} w='30px' mx='8' cursor='pointer' src='https://cultwear.netlify.app/menu.png' display={menuOpen ? 'none' : 'block'} />
             <Image w='30px' p='6px' mt='0' mx='8' cursor='pointer' src='https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/x-22.png' display={menuOpen ? 'block' : 'none'} />
           </Box>
           <Box>
@@ -61,6 +63,7 @@ function Header({ page }) {
               {/* make image black to white */}
               <Image
                 w="200px"
+                className={page == 'home' ? theme.textColor == 'white' ? 'yourImage' : null : null}
                 src="https://logodownload.org/wp-content/uploads/2014/05/zara-logo-1.png"
                 filter={menuOpen ? "invert(0%)" : null}
               />
@@ -74,7 +77,7 @@ function Header({ page }) {
               mx={{ base: 0, lg: 20, xl: 40 }}
               display={{ base: "none", md: "block" }}
               fontSize="sm"
-              color="black"
+              color={page == 'home' ? theme.textColor : 'black'} 
               borderBottom={"1px"}
               pr="8"
             >
@@ -83,16 +86,16 @@ function Header({ page }) {
           </Link>
           <Box gap="6" display={{ base: "none", md: "flex" }}>
             <Link to={isAuthenticated ? null : "/login"}>
-              <Text fontSize="sm">
+              <Text fontSize="sm" onClick={isAuthenticated ? () => {dispatch(authLogout()); dispatch(getCart())} : null} color={page == 'home' ? theme.textColor : 'black'} >
                 {isAuthenticated ? user.name.toUpperCase() : "LOGIN"}
               </Text>
             </Link>
-            <Text fontSize="sm">HELP</Text>
+            <Text color={page == 'home' ? theme.textColor : 'black'}  fontSize="sm">HELP</Text>
           </Box>
           <Link to="/cart">
             <Box mx='7'>
-              <Image src='https://cultwear.netlify.app/cart.png' w='45px' />
-              <Text fontSize='sm' position='absolute' mt='-32px' ml='17px'>{carts.length}</Text>
+              <Image src='https://cultwear.netlify.app/cart.png' w='45px' className={page == 'home' ? theme.textColor == 'white' ? 'yourImage' : null : null} />
+              <Text color={page == 'home' ? theme.textColor : 'black'}  fontSize='sm' position='absolute' mt='-32px' ml='17px'>{carts.length}</Text>
             </Box>
           </Link>
         </Flex>
@@ -110,22 +113,22 @@ function Header({ page }) {
       >
         <Flex flexDirection="column" mt="32" alignItems="center" height="100%">
           <Flex gap="8">
-            <Link to="/mens">
+            <Link to="/store?category=mens">
               <Text fontSize="xs" color="black">
                 MENS
               </Text>
             </Link>
-            <Link to="/womens">
+            <Link to="/store?category=womens">
               <Text fontSize="xs" color="black">
                 WOMENS
               </Text>
             </Link>
-            <Link to="/kids">
+            <Link to="/store?category=kids">
               <Text fontSize="xs" color="black">
                 KIDS
               </Text>
             </Link>
-            <Link to="/new">
+            <Link to="/store">
               <Text fontSize="xs" color="black">
                 NEW
               </Text>

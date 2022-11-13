@@ -11,11 +11,17 @@ function Product() {
     const { id } = useParams();
     const dispatch = useDispatch()
     const { getProduct: { loading, error }, singleProduct } = useSelector(state => state.product)
+    const { data: { isAuthenticated } } = useSelector(state => state.auth)
     const { carts } = useSelector(state => state.cart)
     useEffect(() => {
         dispatch(getSingleProduct(id))
-        dispatch(getProducts({ category: singleProduct.category  }))
+        dispatch(getProducts({ category: singleProduct.category }))
     }, [id, dispatch])
+    var product = carts.find(product => product.productId._id === id)
+    useEffect(() => {
+        product = carts.find(product => product.productId._id === id)
+        console.log(product)
+    }, [carts])
     singleProduct.sizes = ["S", "M", "L", "XL", "XXL"]
     const { title, price, images, description, color, sizes } = singleProduct;
     const toast = useToast()
@@ -75,30 +81,41 @@ function Product() {
                                         </Flex>
                                         <Box h='1px' bg='gray.200' mt='2' mb={6}></Box>
                                         <Button onClick={() => {
-                                            dispatch(addProductToCart(id))
-                                            // find product in cart
-                                            console.log(carts)
-                                            const product = carts.find(product => product.productId === id)
-                                            // if product is in cart
-                                            if (product) {
+                                            if (!isAuthenticated) {
                                                 toast({
-                                                    title: `${title} is already in your cart.`,
-                                                    description: "We have updated the quantity.",
+                                                    title: 'You are not logged in',
+                                                    description: 'Please login to add product to cart',
                                                     status: "warning",
                                                     duration: 2000,
                                                     isClosable: true,
                                                 })
-                                            }else{
-                                                toast({
-                                                    title: `${title} is added to your cart.`,
-                                                    description: "Please check your cart.",
-                                                    status: "success",
-                                                    duration: 2000,
-                                                    isClosable: true,
-                                                })
+                                            } else {
+                                                dispatch(addProductToCart(id))
+                                                // find product in cart
+                                                
+                                                // if product is in cart
+                                                if (product) {
+                                                    toast({
+                                                        title: `${title} is already in your cart.`,
+                                                        description: "We have updated the quantity.",
+                                                        status: "warning",
+                                                        duration: 2000,
+                                                        isClosable: true,
+                                                    })
+                                                } else {
+                                                    toast({
+                                                        title: `${title} is added to your cart.`,
+                                                        description: "Please check your cart.",
+                                                        status: "success",
+                                                        duration: 2000,
+                                                        isClosable: true,
+                                                    })
+                                                }
                                             }
 
-                                        }} mt='2' p='5' w='full' bg='black' rounded='none' size="sm" color='white' _hover={{ bg: 'black' }} _active={{ bg: 'black' }} _focus={{ bg: 'black' }}>ADD TO BAG</Button>
+                                        }} mt='2' p='5' w='full'  rounded='none' size="sm" color='white' bg={product ? 'green.500' : 'black'} _hover={product ? { bg: 'green.600' } : { bg: 'black' }}>
+                                            {product ? 'ADD AGAIN' : 'ADD TO CART'}
+                                        </Button>
                                         <Text fontSize="xs" mt='8' mb='2'>CHECK IN-STORE AVAILABILITY</Text>
                                         <Text fontSize="xs" my='2'>DELIVERY, EXCHANGES AND RETURNS</Text>
                                     </Box>

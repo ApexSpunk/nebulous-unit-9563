@@ -6,11 +6,10 @@ export const authRegister = (data) => async (dispatch) => {
     try {
         dispatch({ type: AUTH_REGISTER_REQUEST });
         const res = await axios.post("https://cultwear.onrender.com/user/register", data);
+        res.data.data = { ...res.data.data, message: res.data.message };
         dispatch({
             type: AUTH_REGISTER_SUCCESS,
-            payload: {
-                message: res.data.message,
-            },
+            payload: res.data.data,
         });
     } catch (error) {
         dispatch({
@@ -27,9 +26,10 @@ export const authLogin = (data) => async (dispatch) => {
     try {
         dispatch({ type: AUTH_LOGIN_REQUEST });
         const res = await axios.post("https://cultwear.onrender.com/user/login", data);
+        res.data.data = { ...res.data.data, message: res.data.message };
         dispatch({ type: AUTH_LOGIN_SUCCESS, payload: res.data.data });
     } catch (error) {
-        dispatch({ type: AUTH_LOGIN_FAILURE, });
+        dispatch({ type: AUTH_LOGIN_FAILURE, payload: { message: error.response.data.message } });
     }
 }
 

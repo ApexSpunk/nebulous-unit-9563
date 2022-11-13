@@ -1,12 +1,12 @@
 import { Box, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import Footer from "./fotter";
 import PageLinks from "./pagesLinks";
-import { useTheme } from '../theme/usetheme'
 export default function  SigngleImage({el,isup,cindex,images,toggle,links}){
-    let {Theme} =useTheme()
-    console.log(el.isdark,Theme)
+    const {theme} = useSelector(state => state.theme)
+    console.log(el.isdark,theme)
    useEffect(()=>{
     toggle(el.isdark)
    },[el])

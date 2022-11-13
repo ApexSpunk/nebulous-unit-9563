@@ -29,12 +29,10 @@ padding: 1rem;
 .filtercolor{
     display: flex;
     justify-content: space-between;
-    width:15%;
 }
 .filtercolordiff{
     display: grid;
     grid-template-columns:repeat(2,1fr);
-    width:15%;
     gap: 1rem;
 }
 
