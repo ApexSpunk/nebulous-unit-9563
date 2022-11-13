@@ -12,6 +12,7 @@ import Product from '../Components/Product';
 import Login from "../Components/Loginnn";
 import Header from "../Components/Header";
 import Cart from './Cart';
+import Checkout from './Checkout';
 
 
 const AllRoutes = () => {
@@ -26,6 +27,7 @@ const AllRoutes = () => {
             <Route path="/loginnn" element={<><Header /><Login /></>} />
             <Route path="/product/:id" element={<><Header /><Product /></>} />
             <Route path="/payment" element={<><Header /><Payment /></>} />
+            <Route path="/checkout" element={<><Header /><Checkout /></>} />
             <Route path="/admin" element={<Admin><Dashboard /></Admin>} />
             <Route path="/admin/products" element={<Admin><Products /></Admin>} />
             <Route path="*" element={<h2>404 Not Found</h2>} />
