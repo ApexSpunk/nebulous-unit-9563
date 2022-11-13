@@ -123,7 +123,7 @@ const Checkout = () => {
         </div>
 
         <div className="money">
-          <p>Total: {total} INCLUDING GST</p>
+          <p>Total: ₹{total} INCLUDING GST</p>
           <Button onClick={onOpen}>Continue</Button>
           <AlertDialog
             motionPreset="slideInBottom"

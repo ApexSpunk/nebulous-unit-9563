@@ -102,7 +102,7 @@ const Payment = () => {
         </div>
 
         <div className="money">
-          <p>Totakl: {total} INCLUDING GST</p>
+          <p>Totakl: ₹{total} INCLUDING GST</p>
           <Button onClick={handlePay}>Continue</Button>
         </div>
       </div>
