@@ -2,6 +2,7 @@ import { Box, Flex, Image, Input, Spacer, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { authLogout } from "../Redux/auth/actions";
 import { getCart } from "../Redux/cart/actions";
 const Cookies = require("js-cookie");
 
@@ -83,7 +84,7 @@ function Header({ page }) {
           </Link>
           <Box gap="6" display={{ base: "none", md: "flex" }}>
             <Link to={isAuthenticated ? null : "/login"}>
-              <Text fontSize="sm">
+              <Text fontSize="sm" onClick={isAuthenticated ? () => {dispatch(authLogout()); dispatch(getCart())} : null} color="black">
                 {isAuthenticated ? user.name.toUpperCase() : "LOGIN"}
               </Text>
             </Link>
@@ -110,22 +111,22 @@ function Header({ page }) {
       >
         <Flex flexDirection="column" mt="32" alignItems="center" height="100%">
           <Flex gap="8">
-            <Link to="/mens">
+            <Link to="/store?category=mens">
               <Text fontSize="xs" color="black">
                 MENS
               </Text>
             </Link>
-            <Link to="/womens">
+            <Link to="/store?category=womens">
               <Text fontSize="xs" color="black">
                 WOMENS
               </Text>
             </Link>
-            <Link to="/kids">
+            <Link to="/store?category=kids">
               <Text fontSize="xs" color="black">
                 KIDS
               </Text>
             </Link>
-            <Link to="/new">
+            <Link to="/store">
               <Text fontSize="xs" color="black">
                 NEW
               </Text>

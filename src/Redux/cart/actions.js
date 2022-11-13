@@ -100,3 +100,4 @@ export const removeProductFromCart = (id) => async (dispatch) => {
         });
     }
 }
+
