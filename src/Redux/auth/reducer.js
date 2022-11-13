@@ -42,7 +42,7 @@ export default function authReducer(state = initialState, { type, payload }) {
           isAuthenticated: true,
           token: payload.token,
           user: payload.user,
-        },
+        }
       };
     case AUTH_LOGIN_FAILURE:
       return {
@@ -66,13 +66,23 @@ export default function authReducer(state = initialState, { type, payload }) {
         userRegister: { loading: true, error: false },
       };
     case AUTH_REGISTER_SUCCESS:
+      Cookies.set("token", payload.token);
+      Cookies.set(
+        "user",
+        JSON.stringify({
+          name: payload.user.name,
+          email: payload.user.email,
+          _id: payload.user._id,
+        })
+      );
       return {
         ...state,
-        userRegister: {
-          loading: false,
-          error: false,
-          message: payload.message,
-        },
+        userRegister: { loading: false, error: false, message: payload.message },
+        data: {
+          isAuthenticated: true,
+          token: payload.token,
+          user: payload.user,
+        }
       };
     case AUTH_REGISTER_FAILURE:
       return {

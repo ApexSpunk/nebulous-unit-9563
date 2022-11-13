@@ -40,7 +40,6 @@ export default function Cart(){
                     <Text>TOTAL   ₹ total <br/>INCLUDING GST<br/>EXCL SHIPPING COST</Text>
                     <Box w="60%"  ><Button w="100%"  bgColor="black" color={"white"}  >CONTINUE</Button></Box>
               </Flex>
-
            </Box>
            
         </Box>
