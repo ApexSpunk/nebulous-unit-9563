@@ -10,9 +10,9 @@ export default function CartSingleCard({ title, price, images, color, quantity, 
             <Flex gap="2">
                 <Box>
 
-                    <Image h="370px" src={images[1]} />
+                    <Image h="350px" src={images[1]} />
                 </Box>
-                <Flex height="370px" direction={"column"} justifyContent="space-between">
+                <Flex height="350px" direction={"column"} justifyContent="space-between">
                     <VStack alignItems={"flex-start"} >
                         <Text>{category}</Text>
                         <Text>{color}</Text>

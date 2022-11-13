@@ -21,6 +21,7 @@ import {
     loading: false,
     error: false,
     message: "",
+    total:0
   };
   
   export default function cartReducer(state = initialState, { type, payload }) {
@@ -37,6 +38,7 @@ import {
           loading: false,
           error: false,
           carts: payload,
+          total:payload.reduce((ac,el)=>ac+(Number(el.quantity)*Number(el.productId.price)),0)
         };
       case GET_CART_FAILURE:
         return {
@@ -53,18 +55,23 @@ import {
       case ADD_TO_CART_SUCCESS:
         const productExists = state.carts.find( cart => cart._id === payload.newCartItem._id);
         if(productExists) {
+          let arr4= state.carts.map( cart => cart._id === payload._id ? payload : cart)
           return {
             ...state,
             loading: false,
             error: false,
-            carts: state.carts.map( cart => cart._id === payload._id ? payload : cart),
+            carts:arr4,
+            total:arr4.reduce((ac,el)=>ac+(Number(el.quantity)*Number(el.productId.price)),0)
           };
         } else {
+          let arr3=[...state.carts, payload.newCartItem]
           return {
             ...state,
             loading: false,
             error: false,
-            carts: [...state.carts, payload.newCartItem],
+            carts:arr3, 
+            total:arr3.reduce((ac,el)=>ac+(Number(el.quantity)*Number(el.productId.price)),0)
+
           };
         }
       case ADD_TO_CART_FAILURE:
@@ -81,16 +88,19 @@ import {
               error: false,
           };
           case UPDATE_CART_SUCCESS:
+            let arr2=state.carts.map((cart) => {
+              if (cart._id === payload.updatedItem._id) {
+                  return payload.updatedItem;
+              }
+              return cart;
+          })
               return {
                   ...state,
                   loading: false,
                   error: false,
-                  carts: state.carts.map((cart) => {
-                      if (cart._id === payload.updatedItem._id) {
-                          return payload.updatedItem;
-                      }
-                      return cart;
-                  }),
+                  carts: arr2,
+                  total:arr2.reduce((ac,el)=>ac+(Number(el.quantity)*Number(el.productId.price)),0)
+
               };
   
               case UPDATE_CART_FAILURE:
@@ -107,11 +117,14 @@ import {
           error: false,
         };
       case REMOVE_FROM_CART_SUCCESS:
+        let arr=state.carts.filter((cart) => cart._id !== payload.id)
         return {
           ...state,
           loading: false,
           error: false,
-          carts: state.carts.filter((cart) => cart._id !== payload.id),
+          carts: arr,
+          total:arr.reduce((ac,el)=>ac+(Number(el.quantity)*Number(el.productId.price)),0)
+
         };
       case REMOVE_FROM_CART_FAILURE:
         return {
@@ -132,6 +145,7 @@ import {
           loading: false,
           error: false,
           carts: [],
+          total:0
         };
       case CLEAR_CART_FAILURE:
         return {
