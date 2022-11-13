@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import "./register.css"
 
 const Register = () => {
@@ -38,6 +39,7 @@ const Register = () => {
     }
 
     return (
+        <>
         <div className='main'>
             <div className='detail' >
                 <h2>PERSONAL DETAILS</h2>
@@ -53,7 +55,7 @@ const Register = () => {
                 </div>
             </div>
             <div>
-                <input style={{marginTop:'5em'}} className='inp' type="text" name='email' placeholder='E-MAIL' value={data.email} onChange = {handelInput} />
+                <input style={{marginTop:'3em'}} className='inp' type="text" name='email' placeholder='E-MAIL' value={data.email} onChange = {handelInput} />
             </div>
             <div>
                 <input style={{marginRight:"3em"}} className='inp' type="text" name='password' placeholder='PASSWORD' value={data.password} onChange = {handelInput} />
@@ -71,6 +73,7 @@ const Register = () => {
                 <input style={{marginRight:"3em"}} className='inp' type="text" name='locality' placeholder='LOCALITY' value={data.locality} onChange = {handelInput} />
                 <input className='inp' type="text" name='city' placeholder='CITY' value={data.city} onChange = {handelInput} />
             </div>
+            <div className='state'>
             <select className='inp' onChange = {handelInput} name='state'>
                 <option value="">STATE</option>
                 <option value="Bihar">Bihar</option>
@@ -88,7 +91,11 @@ const Register = () => {
                 <option value="Madhya Pradesh">Madhya Pradesh</option>
                 <option value="Jammu Kashmir">Jammu Kashmir</option>
             </select>
-            
+            <div className='reg'>
+                <p>REGION</p>
+                <p>India</p>
+            </div>
+            </div>
             <p style={{fontSize:"8px"}}>PREFIX</p>
             <div style={{display:"flex"}}>
                 <p style={{marginRight:"4em",marginTop:"4px", fontSize:'12px'}}>+91</p>
@@ -96,16 +103,64 @@ const Register = () => {
             </div>
             <div>
                 <div>
-                    <input type="checkbox" name="news" checked={data.news} onChange = {handelInput} />
-                    <label htmlFor="">I WISH TO RECIVE ZARA NEWS ON MY E-MAIL</label>
+                    <input className='check' type="checkbox" name="news" checked={data.news} onChange = {handelInput} />
+                    <label className='lab' htmlFor="">I WISH TO RECIEVE ZARA NEWS ON MY E-MAIL</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="termCondition" checked={data.termCondition} onChange = {handelInput} />
-                    <label htmlFor="">I ACCEPT THE PRIVACY STATEMENT</label>
+                    <input className='check1' type="checkbox" name="termCondition" checked={data.termCondition} onChange = {handelInput} />
+                    <label className='lab' htmlFor="">I ACCEPT THE <u> PRIVACY STATEMENT</u></label>
                 </div>
             </div>
-            <button onClick={handelCreateAcc}>CREATE ACCOUNT</button>
+            <button className='button' onClick={handelCreateAcc}>CREATE ACCOUNT</button>
         </div>
+        <div className=' bottom'>
+        <div>
+            <h3>HELP</h3>
+            <p>SHOP AT ZARA.COM</p>
+            <p>PRODUCT</p>
+            <p>GIFT CARD</p>
+            <p>PAYMENT</p>
+            <p>SHIPPING</p>
+            <p>EXCHANGES AND RETURNS</p>
+            <p>SHOPS AND COMPANY</p>
+            <p>CLOTHES COLLECTION PROGRAMME</p>
+            <p>MY ACCOUNT</p>
+        </div>
+        <div>
+            <h3>FOLLOW US</h3>
+            <p>NEWSLETTER</p>
+            <p>INSTAGRAM</p>
+            <p>FACEBOOK</p>
+            <p>TWITTER</p>
+            <p>PINTREST</p>
+            <p>YOUTUBE</p>
+        </div>
+        <div>
+            <h3>COMPANY</h3>
+            <p>ABOUT US</p>
+            <p>JOIN LIFE</p>
+            <p>OFFICES</p>
+            <p>STORIES</p>
+            <p>WORK WITH US</p>
+        </div>
+        <div>
+            <h3>POLICIES</h3>
+            <p>PRIVACY POLICY</p>
+            <p>PURCHASING CONDITIONS</p>
+            <p>GIFT CARD CONDITIONS</p>
+            <p>COOKIES SETTINGS</p>
+        </div>
+    </div>
+    <div className='line'>
+        <p>INDIA</p>
+        <p>ENGLISH  © ALL RIGHTS RESERVED</p>
+    </div>
+    <div className='bot2'>
+        <p>NAME AND ADDRESS OF THE MANUFACTURER:</p>
+        <p>INDUSTRIA DE DISEÑO TEXTIL, S.A. (INDITEX, S.A.)</p>
+        <p>AVENIDA DE LA DIPUTACIÓN, EDIFICIO INDITEX, 15143, ARTEIXO (A CORUÑA), SPAIN</p>
+    </div>
+    </>
     )
 }
 
