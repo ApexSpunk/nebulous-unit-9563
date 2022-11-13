@@ -1,6 +1,7 @@
 import { productReducer } from './products/reducer';
 import authReducer from './auth/reducer';
 import cartReducer from './cart/reducer';
+import themeReducer from './theme/reducer';
 import thunk from 'redux-thunk';
 
 import {
@@ -14,7 +15,8 @@ import {
 const rootReducer = combineReducers({
     product:productReducer,
     auth: authReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    theme: themeReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
