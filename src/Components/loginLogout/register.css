@@ -1,101 +1,27 @@
-.main{
+.mains{
     margin-top: 5em;
     margin-left: 9em;
 }
 .detail{
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 2em;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 3em;
 }
 .radio{
-    width: 15%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
-
+/* .radio> */
 
 .inp{
-    font-size: 10px;
+    font-size: 9px;
     outline: none;
     border-bottom: 0.5px solid black;
-    width: 30%;
-    margin-bottom: 28px;
+    width: 28%;
+    margin-bottom: 26px;
 }
 .tel{
     outline: none;
     border-bottom: 0.5px solid black;
-    font-size: 10px;
-    width: 24.9%;
-}
-.check{
-    margin-top: 20px;
-    margin-right: 10px;
-}
-.check1{
-    margin-top: 13px;
-    margin-right: 10px;
-    margin-bottom: 3em;
-}
-.button{
-    background-color: black;
-    color: white;
-    width: 30%;
-    height: 3em;
-    font-size: 11px;
-    font-weight: bold;
-    margin-top: +10px;
-}
-
-.lab{
-    font-size: 10px;
-}
-
-   
-.state{
-    display:flex;
-    color: grey;
-}
-.reg{
-    margin-left: 30px;
-    margin-top: -10px;
-}
-.reg>p{
-    font-size: 10px;
-}
-.bottom{
-    display:flex;
-    column-gap: 2em;
-    margin-left: 10em;
-    margin-top: 18em;
-}
-.bottom>div>h3{
-    font-weight: 500;
-    font-size: 13px;
-    margin-bottom: 1em;
-}
-.bottom>div>p{
-    color: rgb(118, 117, 117);
-    font-size: 10px;
-    margin-bottom: 4px;
-}
-
-.line{
-    display: flex;
-    justify-content: space-around;
-    margin-left: -19.4em;
-    margin-top: 6em;
-    font-size: 11px;
-    color: gray;
-}
-.bot2{
     font-size: 9px;
-    margin-left: 17.5em;
-    margin-top: 8em;
-    margin-bottom: 10em;
-    color: gray;
-}
-.insideRadio{
-    display: flex;
-    align-items: center;
+    width: 22.8%;
 }
