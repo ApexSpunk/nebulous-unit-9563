@@ -1,6 +1,6 @@
 import { Box, Button, Flex, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { removeProductFromCart, updateProductInCart } from "../Redux/cart/actions";
+import { removeProductFromCart, updateProductInCart } from "../../Redux/cart/actions";
 
 export default function CartSingleCard({ title, price, images, color, quantity, category, _id }) {
     let dispach = useDispatch()
@@ -9,7 +9,6 @@ export default function CartSingleCard({ title, price, images, color, quantity, 
             <Text>{title}</Text>
             <Flex gap="2">
                 <Box>
-
                     <Image h="350px" src={images[1]} />
                 </Box>
                 <Flex height="350px" direction={"column"} justifyContent="space-between">
@@ -18,9 +17,9 @@ export default function CartSingleCard({ title, price, images, color, quantity, 
                         <Text>{color}</Text>
                         <Text>size</Text>
                         <Flex>
-                            <Button bgColor={"transparent"} onClick={() => dispach(updateProductInCart(_id, Number(quantity - 1))) }>-</Button>
+                            <Button bgColor={"transparent"} onClick={() => dispach(updateProductInCart(_id, Number(quantity - 1)))}>-</Button>
                             <Button bgColor={"transparent"}>{quantity}</Button>
-                            <Button bgColor={"transparent"} onClick={() => dispach(updateProductInCart(_id, Number(quantity + 1))) }>+</Button>
+                            <Button bgColor={"transparent"} onClick={() => dispach(updateProductInCart(_id, Number(quantity + 1)))}>+</Button>
                         </Flex>
                     </VStack>
                     <HStack>

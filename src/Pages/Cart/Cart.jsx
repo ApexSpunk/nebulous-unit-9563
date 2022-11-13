@@ -1,7 +1,7 @@
 import {Box, Button, Flex, Text} from "@chakra-ui/react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import CartSingleCard from "../Components/cartSingleCard"
+import CartSingleCard from "../../Components/Cart/SingleCart"
 export default function Cart(){
    let {carts,total}=useSelector((store)=>store.cart)
    let navigate=useNavigate()

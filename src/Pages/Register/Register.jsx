@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { authRegister } from '../../Redux/auth/actions'
-import "./register.css"
+import "./Register.css"
 
 const Register = () => {
     const [data, setData] = useState({

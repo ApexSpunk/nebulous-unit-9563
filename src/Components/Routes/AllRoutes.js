@@ -1,18 +1,17 @@
 import {Routes, Route} from 'react-router-dom';
-import Register from '../Components/loginLogout/Register';
-import UserLoginComponent from '../Components/loginLogout/UserLoginComponent';
-import Dashboard from "../Components/Admin/Dashboard";
-import Products from "../Components/Admin/Products";
-import Admin from "./Admin";
-import Home from "./Home";
-import ProductsData from "./ProductsData";
-import Search from "./Search";
-import Payment from "./payment";
-import Product from '../Components/Product';
-import Login from "../Components/Loginnn";
-import Header from "../Components/Header";
-import Cart from './Cart';
-import Checkout from './Checkout';
+import Register from '../../Pages/Register/Register';
+import UserLoginComponent from '../../Pages/Login/Login';
+import Dashboard from "../Admin/Dashboard";
+import Products from "../Admin/Products";
+import Admin from "../../Pages/Admin/Admin";
+import Home from "../../Pages/Home/Home";
+import ProductsData from "../../Pages/Store/Store";
+import Search from "../../Pages/Search/Search";
+import Payment from "../../Pages/Payment/Payment";
+import Product from '../Product/Product';
+import Header from "../Header/Navbar";
+import Cart from '../../Pages/Cart/Cart';
+import Checkout from '../../Pages/Checkout/Checkout';
 
 
 const AllRoutes = () => {
@@ -24,7 +23,6 @@ const AllRoutes = () => {
             <Route path="/search" element={<><Header /><Search /></>} />
             <Route path="/cart" element={<><Header /><Cart /></>} />
             <Route path="/store" element={<><Header /><ProductsData /></>} />
-            <Route path="/loginnn" element={<><Header /><Login /></>} />
             <Route path="/product/:id" element={<><Header /><Product /></>} />
             <Route path="/payment" element={<><Header /><Payment /></>} />
             <Route path="/checkout" element={<><Header /><Checkout /></>} />

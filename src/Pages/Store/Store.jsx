@@ -1,10 +1,9 @@
 import { Box, Grid, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useSearchParams } from 'react-router-dom'
-import { getProducts } from '../Redux/products/actions'
-import styles from "../Styles/product.module.css"
+import { getProducts } from '../../Redux/products/actions'
+import styles from "./Store.css"
 
 const filtercolor = ['red', "blue", "black", "green", "orange", "white"]
 const filterprice = ["2000-3000", "4000-6000", "6000-8000", "8000-10000", "10000-14000", "15000-200000"]
@@ -16,7 +15,6 @@ const ProductsData = () => {
     const [isOpen, setIsOpen] = useState({ filter: false, color: false, price: false })
 
     const [searchParams, setSearchParams] = useSearchParams()
-    // get category from search params
     var category = searchParams.get('category')
 
     useEffect(() => {

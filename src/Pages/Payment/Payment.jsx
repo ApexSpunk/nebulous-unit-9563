@@ -1,5 +1,5 @@
 import React from "react";
-import "./payment.css";
+import "./Payment.css";
 import { MdChatBubbleOutline } from "react-icons/md";
 import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";

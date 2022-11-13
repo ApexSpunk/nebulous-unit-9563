@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
-import "./login.css"
+import "./Login.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { useToast } from '@chakra-ui/react';
 import { authLogin } from '../../Redux/auth/actions';
 
 
-const UserLoginComponent = () => {
+const Login = () => {
 
     const [loginData, setLoginData] = React.useState({ email: '', password: '' });
 
@@ -115,4 +114,4 @@ const UserLoginComponent = () => {
     )
 }
 
-export default UserLoginComponent
+export default Login

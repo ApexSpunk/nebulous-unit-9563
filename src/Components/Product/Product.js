@@ -2,8 +2,8 @@ import { Box, Button, Flex, Grid, GridItem, Image, Text, useToast } from '@chakr
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addProductToCart } from '../Redux/cart/actions';
-import { getProducts, getSingleProduct } from '../Redux/products/actions';
+import { addProductToCart } from '../../Redux/cart/actions';
+import { getProducts, getSingleProduct } from '../../Redux/products/actions';
 import SimilarProduct from './SimilarProduct';
 
 function Product() {

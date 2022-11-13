@@ -2,8 +2,8 @@ import { Box, Flex, Image, Input, Spacer, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { authLogout } from "../Redux/auth/actions";
-import { getCart } from "../Redux/cart/actions";
+import { authLogout } from "../../Redux/auth/actions";
+import { getCart } from "../../Redux/cart/actions";
 const Cookies = require("js-cookie");
 
 function Header({ page }) {

@@ -13,7 +13,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../Redux/products/actions";
+import { getProducts } from "../../Redux/products/actions";
 
 const Search = () => {
   const [query, setQuery] = useState("");
