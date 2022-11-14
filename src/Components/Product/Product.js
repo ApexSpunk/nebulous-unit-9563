@@ -44,7 +44,18 @@ function Product() {
                                 </Box>
                             </GridItem>
                             <GridItem colSpan={{ base: 7, sm: 7, md: 4, lg: 3 }} mx={{ base: 10, md: 0 }} >
-                                <Box h='85vh' mb='6vh' w='100%' display={{ base: 'none', md: 'block' }} overflowY='scroll' overflowX='hidden' >
+                                <Box h='85vh' mb='6vh' w='100%' display={{ base: 'none', md: 'block' }} overflowY='scroll' overflowX='hidden' css={{
+                                    '&::-webkit-scrollbar': {
+                                        width: '1px',
+                                    },
+                                    '&::-webkit-scrollbar-track': {
+                                        width: '6px',
+                                    },
+                                    '&::-webkit-scrollbar-thumb': {
+
+                                        borderRadius: '24px',
+                                    },
+                                }} >
                                     {
                                         images.map((image, index) => (
                                             <Image key={index} src={image} alt={title} />
@@ -92,7 +103,7 @@ function Product() {
                                             } else {
                                                 dispatch(addProductToCart(id))
                                                 // find product in cart
-                                                
+
                                                 // if product is in cart
                                                 if (product) {
                                                     toast({
@@ -113,7 +124,7 @@ function Product() {
                                                 }
                                             }
 
-                                        }} mt='2' p='5' w='full'  rounded='none' size="sm" color='white' bg={product ? 'green.500' : 'black'} _hover={product ? { bg: 'green.600' } : { bg: 'black' }}>
+                                        }} mt='2' p='5' w='full' rounded='none' size="sm" color='white' bg={product ? 'green.500' : 'black'} _hover={product ? { bg: 'green.600' } : { bg: 'black' }}>
                                             {product ? 'ADD AGAIN' : 'ADD TO CART'}
                                         </Button>
                                         <Text fontSize="xs" mt='8' mb='2'>CHECK IN-STORE AVAILABILITY</Text>

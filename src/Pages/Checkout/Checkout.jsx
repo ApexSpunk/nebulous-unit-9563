@@ -10,6 +10,7 @@ import {
   AlertDialogCloseButton,
   AlertDialogBody,
   AlertDialogFooter,
+  Box,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 
@@ -116,11 +117,11 @@ const Checkout = () => {
         />
       </div>
 
-      <div className="footline">
-        <div className="chat">
+      <Box my='12' className="footline">
+        {/* <div className="chat">
           <MdChatBubbleOutline style={{ height: "17px" }} />
           <h1>CHAT</h1>
-        </div>
+        </div> */}
 
         <div className="money">
           <p>Total: ₹{total} INCLUDING GST</p>
@@ -152,7 +153,7 @@ const Checkout = () => {
             </AlertDialogContent>
           </AlertDialog>
         </div>
-      </div>
+      </Box>
     </div>
   );
 };

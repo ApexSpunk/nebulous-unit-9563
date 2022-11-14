@@ -1,7 +1,7 @@
 import React from "react";
 import "./Payment.css";
 import { MdChatBubbleOutline } from "react-icons/md";
-import { Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -95,17 +95,17 @@ const Payment = () => {
         <p>IN CARD</p>
       </div>
 
-      <div className="footline">
-        <div className="chat">
+      <Box float='right' my='8' mr='28' className="footline">
+        {/* <div className="chat">
           <MdChatBubbleOutline style={{ height: "17px" }} />
           <h1>CHAT</h1>
-        </div>
+        </div> */}
 
         <div className="money">
-          <p>Totakl: ₹{total} INCLUDING GST</p>
+          <p>Total: ₹{total} INCLUDING GST</p>
           <Button onClick={handlePay}>Continue</Button>
         </div>
-      </div>
+      </Box>
     </div>
   );
 };

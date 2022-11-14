@@ -25,15 +25,15 @@ const ProductsData = () => {
         }
     }, [category])
     return (
-        <div >
-            <div className={styles.smallcontainer}>
+        <div>
+            <Box justifyContent='center' gap='6' mx='auto' mt='4' display='flex' w='60%'>
                 <div>VIEW ALL</div>
                 <div>DRESSES</div>
                 <div>SHIRTS</div>
                 <div>TOPS|SWEATERS</div>
                 <div>TROUSERS</div>
                 <div>SHOES</div>
-            </div>
+            </Box>
 
             <Box mx={{ base: 0, md: 10, lg: 20, xl: 24 }}>
                 <Text cursor='pointer' align='right' my='4' onClick={() => setIsOpen({ ...isOpen, filter: !isOpen.filter })}>FILTER</Text>
