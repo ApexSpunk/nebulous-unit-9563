@@ -2,6 +2,7 @@ import { Box, Button, Grid, Heading } from '@chakra-ui/react'
 import { useEffect, useState } from 'react';
 import AddProduct from './AddProduct';
 import SingleProduct from './SingleProduct'
+import Cookies from "js-cookie"
 
 function Products() {
 
@@ -12,7 +13,7 @@ function Products() {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'token': '636aad2323c2e54f773ad8f9:chandan@gmail.com:123'
+        'token': Cookies.get('token')
       },
       body: JSON.stringify(product)
     });
@@ -26,7 +27,7 @@ function Products() {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'token': '636aad2323c2e54f773ad8f9:chandan@gmail.com:123'
+        'token': Cookies.get('token')
       }
     });
     setProducts(products.filter((product) => product._id !== id))
@@ -45,7 +46,7 @@ function Products() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'token': '636aad2323c2e54f773ad8f9:chandan@gmail.com:123'
+        'token': Cookies.get('token')
       },
       body: formData
     });
