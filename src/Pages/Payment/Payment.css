@@ -27,7 +27,6 @@
 }
 
 .payment_cards div {
-  border: 1px solid #efefef;
   width: 20rem;
 }
 
@@ -43,7 +42,6 @@
 }
 
 .remain_cards {
-  border: 1px solid #e8e8e8;
   width: 9rem;
   gap: 20px;
   margin-top: 1.2rem;
