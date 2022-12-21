@@ -21,10 +21,10 @@ export default function Cart() {
             borderRadius: '24px',
           },
         }} overflow={"auto"}>
-          {
+          {// mapping trough the cart array 
             carts.map((el) => {
               return (
-                <Box key={el.id}>
+                <Box key={el._id}>
                   <CartSingleCard {...el.productId} _id={el._id} quantity={el.quantity} />
                 </Box>
               )
@@ -39,6 +39,7 @@ export default function Cart() {
     </Box>
     <Box bottom={"0px"} textAlign='center' className="hi" >
       {
+      //if cart empty then show this
         carts.length === 0 ? <Box h='70vh' display='grid' justifyContent='center' alignItems='center'>
         <Text fontSize='2xl'>Your cart is empty</Text>
         <Button w='96' onClick={() => navigate("/")} colorScheme="blackAlpha" >Continue Shopping</Button>

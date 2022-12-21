@@ -5,7 +5,7 @@ import { removeProductFromCart, updateProductInCart } from "../../Redux/cart/act
 export default function CartSingleCard({ title, price, images, color, quantity, category, _id }) {
     let dispach = useDispatch()
     return (
-        <Box w="400px" >
+        <Box w="400px" key={_id}>
             <Text>{title}</Text>
             <Flex gap="2">
                 <Box>

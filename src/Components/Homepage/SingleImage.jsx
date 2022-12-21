@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import Footer from "./Footer";
 import Links from "./Links";
-
+//this component is the leaf node of carosel to show image 
 export default function SigngleImage({ el, isup, cindex, images, toggle, links }) {
    useEffect(() => {
       toggle(el.isdark)

@@ -11,7 +11,6 @@ export const getCart = () => async (dispatch) => {
                 token: Cookies.get("token"),
             },
         });
-        console.log(res.data);
         dispatch({ type: GET_CART_SUCCESS, payload: res.data.data });
     } catch (error) {
         dispatch({
