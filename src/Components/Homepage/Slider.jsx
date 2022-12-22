@@ -48,6 +48,7 @@ export default function HomePageCarosel({ images, isleft, links, toggle }) {
 
     }
     return (
+        //this component works as horizontal slider
         <motion.div initial={{ opacity: 0, x: isleft ? "-100vh" : "100px", scaleX: 0.5 }}
             animate={{ opacity: 1, x: 0, scaleX: 1 }}
             transition={{ type: "tween", duration: 1 }}>
