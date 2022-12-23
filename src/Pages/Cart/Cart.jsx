@@ -43,11 +43,11 @@ export default function Cart() {
         carts.length === 0 ? <Box h='70vh' display='grid' justifyContent='center' alignItems='center'>
         <Text fontSize='2xl'>Your cart is empty</Text>
         <Button w='96' onClick={() => navigate("/")} colorScheme="blackAlpha" >Continue Shopping</Button>
-        </Box> : <Flex mt='24' justifyContent={"flex-end"} fontSize={10}>
-          <Box w='40%' display='flex' gap='6' justifyContent='center'>
+        </Box> : <Flex mt='24' justifyContent={{base:"center",md:"flex-end"}} fontSize={10}>
+          <Flex w={["100%",'40%']} direction={{base:"column",md:"row"}} gap='6' justifyContent='center'>
             <Text>TOTAL   ₹ {total} <br />INCLUDING GST<br />EXCL SHIPPING COST</Text>
-            <Box w="60%"  ><Button w="100%" bgColor="black" color={"white"} onClick={() => navigate("/payment")}  >CONTINUE</Button></Box>
-          </Box>
+            <Box w={["100%",'60%']}  ><Button w="100%" bgColor="black" color={"white"} onClick={() => navigate("/payment")}  >CONTINUE</Button></Box>
+          </Flex>
         </Flex>
       }
     </Box>
