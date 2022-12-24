@@ -16,8 +16,9 @@ export default function Carousel() {
         isdark ? dispatch(changeTheme("dark")) : dispatch(changeTheme("light"))
     }
     return (
+        // this component works as vertical slider 
         <Box w="100%" h={"100vh"} color={theme.textColor} >
-
+            
             <Flex alignItems={"center"}  >
                 <Box alignItems={"center"}
                     as={motion.div} whileHover={{ scale: 1.3, cursor: "pointer", }} transition={{ duration: 0.8 }}

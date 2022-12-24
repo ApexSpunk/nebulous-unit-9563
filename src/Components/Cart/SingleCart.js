@@ -7,11 +7,11 @@ export default function CartSingleCard({ title, price, images, color, quantity, 
     return (
         <Box w="400px" key={_id}>
             <Text>{title}</Text>
-            <Flex gap="2">
+            <Flex gap="2" direction={{base:"column",md:"row"}}>
                 <Box>
-                    <Image h="350px" src={images[1]} />
+                    <Image h="350" src={images[1]} />
                 </Box>
-                <Flex height="350px" direction={"column"} justifyContent="space-between">
+                <Flex height="350" direction={"column"} justifyContent="space-between">
                     <VStack alignItems={"flex-start"} >
                         <Text>{category}</Text>
                         <Text>{color}</Text>

@@ -1,6 +1,8 @@
 import { Box, Flex, Heading, Link, Text } from "@chakra-ui/react";
 
 export default function Footer() {
+    //this compnent will be there on each horizontal slider on last index
+
     return (
         <Box w="100%" h="60%" pos={"absolute"} zIndex={1000} bottom={"10%"} display="grid" gap={100} p={20} >
             <Box textAlign={"center"}><Link><Heading>JOIN OUR NEWSLETTER</Heading></Link></Box>
