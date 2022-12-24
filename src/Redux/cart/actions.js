@@ -37,7 +37,7 @@ export const addProductToCart = (id) => async (dispatch) => {
         });
 
     } catch (error) {
-        console.log(error);
+        
         dispatch({
             type: ADD_TO_CART_FAILURE,
             payload: { message: error.message }
@@ -62,7 +62,7 @@ export const updateProductInCart = (id, quantity) => async (dispatch) => {
             }
         });
     } catch (error) {
-        console.log(error)
+    
         dispatch({
             type: UPDATE_CART_FAILURE,
             payload: { message: error.message }
@@ -82,7 +82,6 @@ export const removeProductFromCart = (id) => async (dispatch) => {
                 token: Cookies.get("token"),
             },
         });
-        console.log('res: ', res);
 
         dispatch({
             type: REMOVE_FROM_CART_SUCCESS,
