@@ -53,9 +53,10 @@ export default function HomePageCarosel({ images, isleft, links, toggle }) {
             animate={{ opacity: 1, x: 0, scaleX: 1 }}
             transition={{ type: "tween", duration: 1 }}>
             <Box w="100%" h="100vh" overflowY="hidden" overflow={"hidden"} objectFit={"contain"} onWheel={(e) => { e.deltaY > 0 ? handleNext() : handlePrev() }} >
-                {images.slice(cindex, cindex + 1).map((el) => {
+                {images.slice(cindex, cindex + 1).map((el,index) => {
                     return (
-                        <SingleImage el={el} isup={isup} cindex={cindex} images={images} toggle={toggle} links={links} />
+                        <SingleImage key={index} el={el} isup={isup} cindex={cindex} images={images} toggle={toggle} links={links} />
+                       
                     )
                 })}
             </Box>
