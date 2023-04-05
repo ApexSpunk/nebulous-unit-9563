@@ -21,5 +21,5 @@ Zara is a Spanish multi-national retail clothing chain. It specialises in fast f
 
 ![App Screenshot](https://i.ibb.co/kX9jXdk/screencapture-zara-indspunk-2022-12-19-13-19-46-11zon.jpg)
 
-Deployed Link:-
+Deployed Link:- zara.indspunk.com/
 
